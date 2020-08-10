@@ -148,21 +148,18 @@
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="Searching..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
+  <div class="search-input-container"></div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination"></div>
 </div>
 
+      
     </div>
   </div>
 
@@ -345,7 +342,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/algoliasearch@4.3.1/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4.7.0/dist/instantsearch.production.min.js"></script><script src="/js/algolia-search.js"></script>
+
 
 
 
