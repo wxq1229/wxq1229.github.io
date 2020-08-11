@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>老博客链接</title>
-    <url>/2020/08/11/%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/</url>
-    <content><![CDATA[<p>换blog辣~</p>
-<a id="more"></a>
-<p><a href="https://www.cnblogs.com/wxq1229">原来的博客</a></p>
-]]></content>
-      <categories>
-        <category>杂项</category>
-      </categories>
-      <tags>
-        <tag>杂项</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Tokio Marine &amp; Nichido Fire Insurance Programming Contest 2020</title>
     <url>/2020/08/11/Tokio-Marine-Nichido-Fire-Insurance-Programming-Contest-2020/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/tokiomarine2020/tasks">Link</a></p>
+<a id="more"></a>
 <h2 id="A-Nickname"><a href="#A-Nickname" class="headerlink" title="A. Nickname"></a>A. Nickname</h2><p>难/kk，<a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15709689">评测链接</a></p>
 <h2 id="B-Tag"><a href="#B-Tag" class="headerlink" title="B. Tag"></a>B. Tag</h2><p>难/kk， <a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15709850">评测链接</a></p>
 <h2 id="C-Lamps"><a href="#C-Lamps" class="headerlink" title="C. Lamps"></a>C. Lamps</h2><p>发现有效的操作轮数不是很多，模拟到所有$A_i=N$即可，<a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15710108">评测链接</a></p>
@@ -56,6 +43,20 @@
       <tags>
         <tag>题解</tag>
         <tag>AtCoder</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>老博客链接</title>
+    <url>/2020/08/11/%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/</url>
+    <content><![CDATA[<p>换blog辣~</p>
+<a id="more"></a>
+<p><a href="https://www.cnblogs.com/wxq1229">原来的博客</a></p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>杂项</tag>
       </tags>
   </entry>
 </search>
