@@ -14,4 +14,48 @@
         <tag>杂项</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Tokio Marine &amp; Nichido Fire Insurance Programming Contest 2020</title>
+    <url>/2020/08/11/Tokio-Marine-Nichido-Fire-Insurance-Programming-Contest-2020/</url>
+    <content><![CDATA[<p><a href="https://atcoder.jp/contests/tokiomarine2020/tasks">Link</a></p>
+<h2 id="A-Nickname"><a href="#A-Nickname" class="headerlink" title="A. Nickname"></a>A. Nickname</h2><p>难/kk，<a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15709689">评测链接</a></p>
+<h2 id="B-Tag"><a href="#B-Tag" class="headerlink" title="B. Tag"></a>B. Tag</h2><p>难/kk， <a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15709850">评测链接</a></p>
+<h2 id="C-Lamps"><a href="#C-Lamps" class="headerlink" title="C. Lamps"></a>C. Lamps</h2><p>发现有效的操作轮数不是很多，模拟到所有$A_i=N$即可，<a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15710108">评测链接</a></p>
+<h2 id="D-Knapsack-Queries-on-a-tree"><a href="#D-Knapsack-Queries-on-a-tree" class="headerlink" title="D. Knapsack Queries on a tree"></a>D. Knapsack Queries on a tree</h2><p><del>有幸遇到了一道校内膜你赛的题</del></p>
+<p>一次询问只会和当前点到根路径上的点有关，同时注意到前$\frac{1}{2}$层的节点总数在$\sqrt{N}$级别，后面的层数很少但节点却很多。</p>
+<p>分块，DP预处理出前$1…S$个点在$L=1…10^5$时的答案，对于后面的点$2^n$暴力即可。</p>
+<p>取$S=\sqrt{N}$，询问总复杂度$O(Q\sqrt N)$，<a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15710437">评测链接</a></p>
+<h2 id="E-O-rand"><a href="#E-O-rand" class="headerlink" title="E. O(rand)"></a>E. O(rand)</h2><p>注意到一点，考虑$S$和$T$二进制下从右起第$i$位，分四种情况</p>
+<ul>
+<li><p>$S$当前位为$1$，$T$当前位为$0$，原地爆炸，$Ans=0$</p>
+</li>
+<li><p>$S$当前位为1，$T$当前位为$1$，那么就一定不能选这位为$0$的数</p>
+</li>
+<li><p>$S$当前位为$0$，$T$当前位为$0$，那么就一定不能选这位为$1$的数</p>
+</li>
+<li><p>$S$当前位为$0$，$T$当前位为$1$，既要选这一位为$1$的又要选这一位为$0$的</p>
+</li>
+</ul>
+<p>判定无解或去除一定不会被选的数后问题变为$S=0$，$T=2^k-1$。</p>
+<p>考虑容斥，令$f(U)$表示满足下面这个条件的方案的数量：</p>
+<ul>
+<li>若集合$U$中不包含元素$i$，那么对这一位没有要求</li>
+<li>若集合$U$中包含元素$i$，那么选出的所有数$or$起来这一位不是$1$，或者$and$起来不为$0$</li>
+</ul>
+<p>答案即为$\sum_U (-1)^{\mid U\mid} f(U)$</p>
+<p>考虑怎么计算$f(U)$，由于不关心$U$中不包含的二进制位，所以将所有$A_i$与上$U$，然后再计数。</p>
+<p>这样过后$A_i$就只能和自己相同的$A_j$分在一组。</p>
+<p>预处理出组合数前缀和，开个桶算下即可。</p>
+<p><a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15722626">评测链接</a></p>
+<h2 id="F-Triangles"><a href="#F-Triangles" class="headerlink" title="F. Triangles"></a>F. Triangles</h2><p>不会，咕咕咕（</p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>AtCoder</tag>
+      </tags>
+  </entry>
 </search>
