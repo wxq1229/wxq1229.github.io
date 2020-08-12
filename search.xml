@@ -43,7 +43,7 @@ g(N) = \begin{cases}
 <h2 id="F-Robots-and-Exits"><a href="#F-Robots-and-Exits" class="headerlink" title="F. Robots and Exits"></a>F. Robots and Exits</h2><p>一个机器人只能从在他左边或右边最近的出口出去</p>
 <p>同时删去在第一个出口左边、在最后一个出口右边和原来就在出口上的机器人不会影响答案（因为他们能匹配的出口就一个）</p>
 <p>对于第$i$个机器人，令$x_i$表示它到它左边离它最近的出口的距离，$y_i$表示它到它右边离它最近的出口的距离</p>
-<p>同时对于某一个时刻，影响一个机器人是否消失的因素总共有两个</p>
+<p>对于某一个时刻，影响一个机器人是否消失的因素总共有两个</p>
 <ul>
 <li>向左移动的总步数</li>
 <li>向右移动的总步数</li>

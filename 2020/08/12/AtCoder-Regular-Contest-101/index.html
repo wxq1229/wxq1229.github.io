@@ -28,7 +28,7 @@
 <meta property="og:description" content="Link C. Candles被点燃蜡烛一定在一个区间内，枚举这个区间计算即可 复杂度$\mathcal{O}(N)$，评测链接 D. Median of Medians对于一个长度为$N$的序列，它的median一定满足以下条件：  序列中小于等于median的数（包括本身）的个数$\times 2 &gt; N$ median应为满足上面那个条件的最小的数  二分，假设二分到的数为$x$，问题">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-12T09:32:46.000Z">
-<meta property="article:modified_time" content="2020-08-12T11:08:14.675Z">
+<meta property="article:modified_time" content="2020-08-12T11:10:01.117Z">
 <meta property="article:author" content="wxq1229">
 <meta property="article:tag" content="题解">
 <meta property="article:tag" content="AtCoder">
@@ -210,7 +210,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-08-12 17:32:46 / Modified: 19:08:14" itemprop="dateCreated datePublished" datetime="2020-08-12T17:32:46+08:00">2020-08-12</time>
+              <time title="Created: 2020-08-12 17:32:46 / Modified: 19:10:01" itemprop="dateCreated datePublished" datetime="2020-08-12T17:32:46+08:00">2020-08-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -277,7 +277,7 @@ g(N) = \begin{cases}
 <h2 id="F-Robots-and-Exits"><a href="#F-Robots-and-Exits" class="headerlink" title="F. Robots and Exits"></a>F. Robots and Exits</h2><p>一个机器人只能从在他左边或右边最近的出口出去</p>
 <p>同时删去在第一个出口左边、在最后一个出口右边和原来就在出口上的机器人不会影响答案（因为他们能匹配的出口就一个）</p>
 <p>对于第$i$个机器人，令$x_i$表示它到它左边离它最近的出口的距离，$y_i$表示它到它右边离它最近的出口的距离</p>
-<p>同时对于某一个时刻，影响一个机器人是否消失的因素总共有两个</p>
+<p>对于某一个时刻，影响一个机器人是否消失的因素总共有两个</p>
 <ul>
 <li>向左移动的总步数</li>
 <li>向右移动的总步数</li>
