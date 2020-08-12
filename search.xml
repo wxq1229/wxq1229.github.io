@@ -17,7 +17,7 @@
 <p>那么$m$ 数量即为$d$上区间和大于$1$的区间个数</p>
 <p>对$d$做前缀和得到$s$（$s_0=0$），问题变为有多少有序对$(i,j)$，满足</p>
 <ul>
-<li>$0 \le i<j \le n$且$s_j>s_i$</j></li>
+<li>$0 \le i &lt; j \le N$ 且 $s_j&gt;s_i$</li>
 </ul>
 <p>树状数组计算顺序对的个数即可</p>
 <p>复杂度$\mathcal{O}(N \log^2N)$，<a href="https://atcoder.jp/contests/arc101/submissions/15831453">评测链接</a></p>
