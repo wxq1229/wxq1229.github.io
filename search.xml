@@ -37,7 +37,7 @@ g(N) = \begin{cases}
 0 \quad\quad\quad\quad\quad\quad\quad\quad \ \ \ \ \  (2 \not\mid N)
 \end{cases}</script><p>即第$1$个点有$N-1$个点可供匹配，去除两个后剩下来的第二个待匹配点有$N-3$个点共匹配</p>
 <p>考虑树形DP出上面那个式子的值</p>
-<p>定义$dp(u,i)$表示在点$u$的子树中，点$u$所在连通块大小为$i$时对答案的贡献总和</p>
+<p>定义$dp(u,i)$表示在点$u$的子树中，点$u$所在连通块大小为$i$时对答案的贡献总和（不算$i$所在连通块的贡献）</p>
 <p>枚举儿子$v$讨论割或者不割$(u,v)$这条边的贡献。如果割，那么要乘上一个$-1$的常数。</p>
 <p>类似树上背包那样转移即可</p>
 <p>复杂度$\mathcal{O}(N^2)$，<a href="https://atcoder.jp/contests/arc101/submissions/15659672">评测链接</a></p>
