@@ -22,19 +22,19 @@
 
   <meta name="description" content="Link">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dwango Programming Contest 6th">
-<meta property="og:url" content="http://wxq1229.github.io/2020/08/15/Dwango-Programming-Contest-6th/index.html">
+<meta property="og:title" content="NOMURA Programming Competition 2020">
+<meta property="og:url" content="http://wxq1229.github.io/2020/08/20/NOMURA-Programming-Competition-2020/index.html">
 <meta property="og:site_name" content="WXQ&#39;s Blog">
 <meta property="og:description" content="Link">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-15T09:12:16.000Z">
-<meta property="article:modified_time" content="2020-08-15T11:51:33.360Z">
+<meta property="article:published_time" content="2020-08-20T08:05:38.000Z">
+<meta property="article:modified_time" content="2020-08-20T08:09:53.758Z">
 <meta property="article:author" content="wxq1229">
 <meta property="article:tag" content="题解">
 <meta property="article:tag" content="AtCoder">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://wxq1229.github.io/2020/08/15/Dwango-Programming-Contest-6th/">
+<link rel="canonical" href="http://wxq1229.github.io/2020/08/20/NOMURA-Programming-Competition-2020/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Dwango Programming Contest 6th | WXQ's Blog</title>
+  <title>NOMURA Programming Competition 2020 | WXQ's Blog</title>
   
 
 
@@ -186,7 +186,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wxq1229.github.io/2020/08/15/Dwango-Programming-Contest-6th/">
+    <link itemprop="mainEntityOfPage" href="http://wxq1229.github.io/2020/08/20/NOMURA-Programming-Competition-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -199,7 +199,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Dwango Programming Contest 6th
+          NOMURA Programming Competition 2020
         </h1>
 
         <div class="post-meta">
@@ -210,7 +210,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-08-15 17:12:16 / Modified: 19:51:33" itemprop="dateCreated datePublished" datetime="2020-08-15T17:12:16+08:00">2020-08-15</time>
+              <time title="Created: 2020-08-20 16:05:38 / Modified: 16:09:53" itemprop="dateCreated datePublished" datetime="2020-08-20T16:05:38+08:00">2020-08-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,44 +237,64 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/dwacon6th-prelims">Link</a></p>
+        <p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/nomura2020">Link</a></p>
 <a id="more"></a>
-<h2 id="A-Falling-Asleep"><a href="#A-Falling-Asleep" class="headerlink" title="A. Falling Asleep"></a>A. Falling Asleep</h2><p>难/kk，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15883987">评测链接</a></p>
-<h2 id="B-Fusing-Slimes"><a href="#B-Fusing-Slimes" class="headerlink" title="B. Fusing Slimes"></a>B. Fusing Slimes</h2><p>由期望的线性性可以把$N-1$个间隙分开来考虑，设$f_i$表示左边有$i$只slime的一段区间期望被经过多少次</p>
-<p>那么答案就是$\sum_{i=1}^{N-1} (x_{i+1}-x_i)f_i$</p>
-<p>考虑计算$f_i$，首先第一次如果就抽到线段左边第一个点的话那么经过次数会加1，不然就变成$i-1$个slime的情况</p>
-<p>因此$f_i=\frac{1}{i}+f_{i-1}$，递推即可</p>
-<p>复杂度$\mathcal{O}(N)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15885372">评测链接</a></p>
-<h2 id="C-Cookie-Distribution"><a href="#C-Cookie-Distribution" class="headerlink" title="C. Cookie Distribution"></a>C. Cookie Distribution</h2><p>最后乘上组合数相当于直接统计所有分配方案下小朋友们的愉悦度总和</p>
-<p>看起来没啥思路，注意到最后那个乘法，$c_i$相当于在小朋友$i$获得的$c_i$块饼干中抢走一块的方案数，最后从每个小朋友手中抢走一块饼干</p>
-<p>考虑DP，令$dp_{i,j}$表示分配完前$i$天，有$j$个小朋友已经被抢走一个饼干的方案数</p>
-<p>枚举第$i+1$天被抢走刚分配到的饼干的小朋友的数量转移即可</p>
-<p>复杂度$\mathcal{O}(KN^2)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15885734">评测链接</a></p>
-<h2 id="D-Arrangement"><a href="#D-Arrangement" class="headerlink" title="D. Arrangement"></a>D. Arrangement</h2><p><del>搜，都可以搜</del></p>
-<p>相当于找补图中字典序最小的哈密顿路径</p>
-<p>这$N \le 10^5$完全没想法啊</p>
-<p>但是补图比较疏密，所以随便搜出回路的概率还是挺大的，考虑乱搞</p>
-<p>直接爆搜，但枝还是要剪的，不然一个$-1$就起飞了</p>
+<h2 id="A-Study-Scheduling"><a href="#A-Study-Scheduling" class="headerlink" title="A. Study Scheduling"></a>A. Study Scheduling</h2><p>难/kk，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/nomura2020/submissions/16004681">评测链接</a></p>
+<h2 id="B-Postdocs"><a href="#B-Postdocs" class="headerlink" title="B. Postdocs"></a>B. Postdocs</h2><p>填$\text{D}$至少使答案加$1$，一定不会劣与$\text{P}$，于是全部填$\text{D}$即可</p>
+<p>复杂度$\mathcal{O}(|T|)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/nomura2020/submissions/16004703">评测链接</a></p>
+<h2 id="C-Folia"><a href="#C-Folia" class="headerlink" title="C. Folia"></a>C. Folia</h2><p>第$N$层一定只有$A_N$个点</p>
+<p>如果第$i$层有$C_i$个节点，那么第$i-1$层最少有$\lceil C_i /2\rceil+A_{i-1}$（尽量两个节点共用一个爸爸），最多有$C_i+A_{i-1}$个节点（一个节点一个父亲）</p>
+<p>于是可以递推出第$i$层节点个数的上界以及下界，判断无解就看第$0$层是否能有$1$个节点</p>
+<p>然后贪心安排$1$到$N$层的节点个数即可，另外注意$N=0$时的一些特判</p>
+<p>复杂度$\mathcal{O}(N)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/nomura2020/submissions/16005201">评测链接</a></p>
+<h2 id="D-Urban-Planning"><a href="#D-Urban-Planning" class="headerlink" title="D. Urban Planning"></a>D. Urban Planning</h2><p>考虑知道所有$P_i$过后如何计算最小需要的边数</p>
+<p>对于一个$i$，连一条双向边$(i,P_i)$，那么所形成的的图一定是一个基环树森林，对于每棵基环树，可以省去一条在环上的边，于是最小边数就是$N-C$（$C$为环的个数）</p>
+<p>那么先对于所有已知的$P_i$连一条$(i,P_i)$的双向边，所形成的图一定是几棵树加一些基环树，每棵树中一定有一个未知$P_i$的节点$i$，以它们为根，形成了$K$棵树$T_1,T_2,\cdots,T_K$</p>
+<p>我们需要计算在所有情况下$C$的总和，其余已知基环树的贡献我们可以直接算出来</p>
+<p>在树中选择若干个出来在它们之间连边会形成一个环，设选出来$M$棵树，为$T’_1,T’_2,\cdots,T’_M$，那么这些树的贡献就是$(N-1)^{K-M-1}(M-1)!\prod\limits_{i=1}^{M} |T’_i|$（$|T|$表示树$T$的大小），即其他点的安排方案数$\times$圆排列的个数$\times$ 形成环的连边方案数</p>
+<p>DP出$M=1 \cdots K$时$\prod$的和，注意特判$M=1$的时候$\prod$里面是$|T’ |-1$</p>
+<p>实现的时候写的是单向边，但判环什么的问题不大</p>
+<p>复杂度$\mathcal{O}(N^2)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/nomura2020/submissions/16009585">评测链接</a></p>
+<h2 id="E-Binary-Programming"><a href="#E-Binary-Programming" class="headerlink" title="E. Binary Programming"></a>E. Binary Programming</h2><p>转化，考虑把操作倒过来</p>
 <ul>
-<li><p>考虑搜出的当前路经中最后一个点$u$，如果$a_u$不在搜到的路径上，且$a_u$不能放在所有不在搜到路径上的点的右边那么当前状态显然不可能搜出一条合法的路径</p>
+<li>将所有奇数位上数的和累加到答案上</li>
+<li>删除指定的一个位置</li>
+</ul>
+<p>先删除$\text{0}$一定不会亏，于是在所有$\text{0}$被删除后再删$\text{1}$，我们只要决定如何删$\text{0}$能使贡献最大就好了</p>
+<p>注意到两个连续的$\text{1}$位置一定是一奇一偶，所以在一次删除后这两个位置会贡献且仅会贡献$1$，于是可以忽略这两个位置，后面位置的奇偶性不会发生改变</p>
+<p>那么我们只要考虑形如$\text{00…0100…0100…01…}$这样的串</p>
+<p>考虑一个位置上的$\text{1}$对答案的贡献最大是多少，设他前面有$A$个$0$，后面有$B$个$0$，只要保证删除后面数的时候它都在奇数位上贡献就可以达到最大，那么对于奇数位上的$\text{1}$贡献最大为$1+\lfloor A/2\rfloor+B$，对于偶数位上的，贡献最大为$\lceil A/2 \rceil+B$</p>
+<p>每个位置贡献的最大值都能被达到，我们可以构造出如下方案</p>
+<ul>
+<li>先删除第一段所有的$\text{0}$，再把后面从左到右的每段$\text{0}$依次删到每段只剩下一个（这样可以保证在删除某个$\text{1}$后面的$\text{0}$的时候它在奇数位上），然后把剩下的$\text{0}$全部删掉</li>
+</ul>
+<p>最后把剩下来全是$\text{1}$的串的贡献加上即可</p>
+<p>复杂度$\mathcal{O}(|T|)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/nomura2020/submissions/16045181">评测链接</a></p>
+<h2 id="F-Sorting-Game"><a href="#F-Sorting-Game" class="headerlink" title="F. Sorting Game"></a>F. Sorting Game</h2><p>考虑什么样的序列才能完成排序，一个必要条件是</p>
+<ul>
+<li>对于一个序列$A$中的两个位置$i,j$，如果 $i &lt; j$ 且 $A_i &gt; A_j$，就应当满足 $A_i,A_j$ 在二进制下有且仅有$1$位不同（因为这两个位置上的数一定会在某次操作被交换）</li>
+</ul>
+<p>如果满足上面这个条件，显然能构造出排序的方法：让最小的数一路往前与比他大的数交换，这样它一定能到最左边，第二小的数一路往前与比他大的数交换，这样它最后会到第二个位置，以此类推，最终一定能完成排序</p>
+<p>所以一个序列合法当且仅当它满足这个条件</p>
+<p>任意选择几个二进制位变成$0$就相当于删除那一位，因此对于原序列中的一对位置$i,j$（$i<j$），如果在删去若干数位后有$A_i>A_j$那么此时$A_i$与$A_j$要满足二进制下有且仅有$1$位不同</j$），如果在删去若干数位后有$A_i></p>
+<p>考虑两个数$A,B$，在二进制下从高位往低位看，设$A$当前数位上的数为$x$，$B$当前数位上的数上为$y$</p>
+<ul>
+<li><p>如果$x=0,y=0$或$x=1,y=1$显然当前位删不删除没有什么区别，继续往下看</p>
 </li>
-<li><p>另外可以维护一下下一个点的最小值</p>
+<li><p>如果$x=0,y=1$，最坏情况下该位会被删除（不然此时$A$一定小于$B$），依然继续扫描</p>
+</li>
+<li><p>如果$x=1,y=0$，在这位不被删除的情况下对方就能在操作后使得$A&gt;B$，那么后面的若干位就一定要<strong>全部相等</strong>，如果全部相等那么判定合法，否则整个序列就不合法</p>
 </li>
 </ul>
-<p>加了这两个剪枝过后跑的飞快/cy</p>
-<p>复杂度$\mathcal{O}(?)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15886644">评测链接</a></p>
-<h2 id="E-Span-Covering"><a href="#E-Span-Covering" class="headerlink" title="E. Span Covering"></a>E. Span Covering</h2><p>限制所有整点都要被覆盖到，考虑容斥，枚举$k$个未被覆盖的点$p_1,p_2,\cdots,p_k$，会把$[0,X)$从左往右依次分成$[0,p_1),[p1+1,p_2),\cdots ,[p_{k-1}+1,p_k),[p_k+1,X)$这$k+1$个小区间</p>
-<p>设这些区间的长度分别是$S_1,S_2,\cdots,S_{k+1}$（$S_i \ge 0$）</p>
-<p>那么第$i$个sheet，他就有$\sum\limits_{S_j+1 \ge L_i} S_j-L_i+1$种摆放方式，所以这种情况下总共有$\prod_{i=1}^N \sum\limits_{S_j+1 \ge L_i} S_j-L_i+1$个不同方案</p>
-<p>将所有情况下的摆放方案乘上一个容斥系数$(-1)^k$求和即可</p>
-<p>考虑给定$k$如何求所有满足限制的方案的和</p>
-<p>首先由于强制不能被覆盖的点$p$可能会相邻或者在左右边界上，这些都会使$S_i=0$，也就是说我们并不知道$S$的和，不是很方便算方案数</p>
-<p>不妨让所有$S$加$1$，这时候显然有$\sum S_j=X+1$，让$X$也加$1$好了</p>
-<p>于是柿子变成枚举所有的$\sum_{j=1}^{k+1} S_j=X(S_j \ge 1)$，对$\prod_{i=1}^N \sum\limits_{S_j \ge L_i} S_j-L_i$求和</p>
-<p>考虑DP，为了方便我们强制$S$从大到小排列只要在最后乘上可重集的排列数就好了</p>
-<p>令$dp_{l,c,x}$表示$k=c-1$，$S_1 \ge S_2 \ge \cdots S_{c} &gt; l$，$\sum S_j=x$时上面柿子的和（同时限制柿子中的$L_i &gt; l$）</p>
-<p>在用$dp_{l}$更新$dp_{l-1}$的时候先算前面几个sheet所代表的因式的贡献再乘上$L_i=l$这些sheet所代表的因式的贡献也就是$x-cL_i$即可</p>
-<p>复杂度$\mathcal{O}(X^3)$左右，不会算/kk，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15904207">评测链接</a></p>
+<p>所以如果序列$A$合法，对于所有$i,j$（$i&lt;j$），对$A_i,A_j$做上述扫描后都应该合法</p>
+<p>DP，从低到高安排每一个数位，令$dp_{i,j}$表示$N=i,M=j$时候的答案</p>
+<p>考虑$j$个数每个数二进制下最高位从左到右排开来会长什么样，注意到前缀$0$与后缀$1$并不会有什么影响，可以先将前缀$0$与后缀$1$删去</p>
+<ul>
+<li>如果删下来是空串，即原来最高位排开来长这样$\text{00…011…1}$，那么不管后面数位如何都一定满足条件，于是$dp_{i,j} \leftarrow (j+1)\times dp_{i-1,j}$</li>
+<li>若删下来不是空串，原来就应该长成这样$\text{00…01??…?011…1}$，此时第一个$1$与最后一个$0$所在的那两个数后面几位一定要全部相等，而中间的$\text{?}$位置上的数一定会和前面的$1$或后面的$0$发生冲突，即这一段所有数后面的数位都应该全部相等，不妨把$\text{1??…?0}$缩成一个数，于是串变成这样$\text{00..0X11..1}$，枚举缩水后串的长度转移即可</li>
+</ul>
+<p>于是$dp_{i,j} = dp_{i-1,j} \times (j+1) + \sum\limits_{k=1}^{j-1} 2^{j-k-1} \times k \times dp_{i-1,k}$，用前缀和优化转移即可</p>
+<p>复杂度$\mathcal{O}(NM)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/nomura2020/submissions/16023250">评测链接</a></p>
 
     </div>
 
@@ -294,13 +314,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/13/UOJ551-%E3%80%90UNR-4%E3%80%91%E6%A0%A1%E5%9B%AD%E9%97%B2%E9%80%9B/" rel="prev" title="UOJ551 【UNR #4】校园闲逛">
-      <i class="fa fa-chevron-left"></i> UOJ551 【UNR #4】校园闲逛
+    <a href="/2020/08/15/Dwango-Programming-Contest-6th/" rel="prev" title="Dwango Programming Contest 6th">
+      <i class="fa fa-chevron-left"></i> Dwango Programming Contest 6th
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/08/20/NOMURA-Programming-Competition-2020/" rel="next" title="NOMURA Programming Competition 2020">
-      NOMURA Programming Competition 2020 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -360,7 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Falling-Asleep"><span class="nav-number">1.</span> <span class="nav-text">A. Falling Asleep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Fusing-Slimes"><span class="nav-number">2.</span> <span class="nav-text">B. Fusing Slimes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Cookie-Distribution"><span class="nav-number">3.</span> <span class="nav-text">C. Cookie Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Arrangement"><span class="nav-number">4.</span> <span class="nav-text">D. Arrangement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Span-Covering"><span class="nav-number">5.</span> <span class="nav-text">E. Span Covering</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Study-Scheduling"><span class="nav-number">1.</span> <span class="nav-text">A. Study Scheduling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Postdocs"><span class="nav-number">2.</span> <span class="nav-text">B. Postdocs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Folia"><span class="nav-number">3.</span> <span class="nav-text">C. Folia</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Urban-Planning"><span class="nav-number">4.</span> <span class="nav-text">D. Urban Planning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Binary-Programming"><span class="nav-number">5.</span> <span class="nav-text">E. Binary Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Sorting-Game"><span class="nav-number">6.</span> <span class="nav-text">F. Sorting Game</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
