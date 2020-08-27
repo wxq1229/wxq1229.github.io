@@ -291,4 +291,55 @@ F^{-1}(x) \equiv 2H(x)-H(x)F(x)H(x) \pmod{x^n}</script><p>右边也就是那个$
         <tag>杂项</tag>
       </tags>
   </entry>
+  <entry>
+    <title>AtCoder Regular Contest 092</title>
+    <url>/2020/08/27/AtCoder-Regular-Contest-092/</url>
+    <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc092">Link</a></p>
+<a id="more"></a>
+<h2 id="C-2D-Plane-2N-Points"><a href="#C-2D-Plane-2N-Points" class="headerlink" title="C. 2D Plane 2N Points"></a>C. 2D Plane 2N Points</h2><p>$N \le 100$，二分图匹配裸题，好像还有个妙妙贪心</p>
+<p>复杂度$\mathcal{O}(N^3)$，<a href="https://atcoder.jp/contests/arc092/submissions/16177277">评测链接</a></p>
+<h2 id="D-Two-Sequences"><a href="#D-Two-Sequences" class="headerlink" title="D. Two Sequences"></a>D. Two Sequences</h2><p>考虑计算答案二进制下的第$k$位，问题变为统计有多少$(i,j)$使得$a_i+b_j$二进制下第$k$位为$1$</p>
+<p>首先只保留$a_i,b_i$二进制下后$k$位（即对$2^{k+1}$取模），二进制下第$k$位为$1$相当于$2^{k} \le (a_i+b_j) \bmod 2^{k+1}$，分类讨论</p>
+<ul>
+<li><script type="math/tex">\begin{cases} a_i+b_j < 2^{k+1} \\ a_i+b_j \ge 2^{k} \end{cases}</script>，可以得到$2^{k}-a_i \le b_j &lt; 2^{k+1}-a_i$</li>
+<li><script type="math/tex">\begin{cases} a_i+b_j \ge 2^{k+1} \\ a_i + b_j - 2^{k+1} \ge 2^{k}\end{cases}</script>，可以得到$b_j \ge 2^{k+1}+2^{k}-a_i$</li>
+</ul>
+<p>将$b$排序枚举$a_i$二分即可</p>
+<p>复杂度$\mathcal{O}(N \log N \log V)$，<a href="https://atcoder.jp/contests/arc092/submissions/16178438">评测链接</a></p>
+<h2 id="E-Both-Sides-Merger"><a href="#E-Both-Sides-Merger" class="headerlink" title="E. Both Sides Merger"></a>E. Both Sides Merger</h2><p>最后剩下的数一定是原序列里若干数的和，且这些数在原序列里下标的奇偶性要相同</p>
+<p>于是答案就是奇数位上正数的和与偶数位上正数的和的最大值</p>
+<p>考虑构造，假设选出来的下标为$p_{1},p_{2},\cdots ,p_M$，先把左右边界的数全部删掉再从左往右合并</p>
+<p>对于两个相邻的位置$p_i,p_{i+1}$， 一直删去两个位置的中点即可（由于两个位置的奇偶性相同，所以一定能删干净）</p>
+<p>注意特判所有数都小于等于$0$的情况</p>
+<p>复杂度$\mathcal{O}(N)$，<a href="https://atcoder.jp/contests/arc092/submissions/16225683">评测链接</a></p>
+<h2 id="F-Two-Faced-Edges"><a href="#F-Two-Faced-Edges" class="headerlink" title="F. Two Faced Edges"></a>F. Two Faced Edges</h2><p>翻转一条边，把删除和加入分开来看，对于翻转边$u \rightarrow v$</p>
+<ul>
+<li><p>删除边$u \rightarrow v$，如果原来$v$能到达$u$，且$u$不能不通过$u \rightarrow v$这条边到达$v$，那么强联通分量的个数将增加$1$</p>
+</li>
+<li><p>加入边$v \rightarrow u$，如果原来$u$能不通过$u \rightarrow v$这条边到达$v$，且原来$v$不能到达$u$，那么强联通分量的个数将减少$1$</p>
+</li>
+</ul>
+<p>只要能判定上面这两个东西就能知道翻转一条边后强联通分量的个数是否会改变了</p>
+<p>我们需要回答两种问题</p>
+<ul>
+<li>原来$u$能否到达$v$</li>
+<li>原来$u$能否不通过$u \rightarrow v$这条边到达$v$</li>
+</ul>
+<p>对于第一个问题遍历一遍就好，考虑第二个问题</p>
+<p>枚举$u$以及它的出边$u \rightarrow v_1, u \rightarrow v_2, \cdots, u \rightarrow v_M$</p>
+<p>对于一条边$u \rightarrow v_i$，如果$u$到达$v_i$能不经过它，那么经过$u \rightarrow v_1, u \rightarrow v_2, \cdots, u \rightarrow v_{i-1}$或$u \rightarrow v_{i+1}, u \rightarrow v_{i+2}, \cdots, u \rightarrow v_M$这些边就一定能到达$v_i$</p>
+<p>先按$v_1,v_2,\cdots v_M$的顺序进行遍历，对每个点给它标记上第一次到达这个点经过的是那条边</p>
+<p>再按$v_M,v_{M-1},\cdots,v_{1}$遍历，同上对每个点做标记</p>
+<p>于是对于一条边$u \rightarrow v_i$，$u$到达$v_i$能不经过它，当且仅当两次遍历下来$v_i$的标记一样（这时候一定都是$i$）</p>
+<p>复杂度$\mathcal{O}(NM)$，<a href="https://atcoder.jp/contests/arc092/submissions/16245218">评测链接</a></p>
+]]></content>
+      <categories>
+        <category>AtCoder</category>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>AtCoder</tag>
+      </tags>
+  </entry>
 </search>
