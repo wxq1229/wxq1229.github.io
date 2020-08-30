@@ -342,4 +342,73 @@ F^{-1}(x) \equiv 2H(x)-H(x)F(x)H(x) \pmod{x^n}</script><p>右边也就是那个$
         <tag>AtCoder</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Educational Codeforces Round 85</title>
+    <url>/2020/08/30/Educational-Codeforces-Round-85/</url>
+    <content><![CDATA[<p><a href="https://codeforces.ml/contest/1334">Link</a></p>
+<a id="more"></a>
+<h2 id="A-Level-Statistics"><a href="#A-Level-Statistics" class="headerlink" title="A. Level Statistics"></a>A. Level Statistics</h2><p>阅读理解题…，<a href="https://paste.ubuntu.com/p/PcsRp5Fqk2/">代码链接</a></p>
+<h2 id="B-Middle-Class"><a href="#B-Middle-Class" class="headerlink" title="B. Middle Class"></a>B. Middle Class</h2><p>贪心，尽量选有钱的人平均分配，<a href="https://paste.ubuntu.com/p/xbxRKF58M3/">代码链接</a></p>
+<h2 id="C-Circle-of-Monsters"><a href="#C-Circle-of-Monsters" class="headerlink" title="C. Circle of Monsters"></a>C. Circle of Monsters</h2><p>怪兽一定是按顺序打过去的，枚举第一个打的是那个顺时针打过去就好了</p>
+<p>前缀和什么的算一下就好了，<a href="https://paste.ubuntu.com/p/BjdvYgpJdh/">代码链接</a></p>
+<h2 id="D-Minimum-Euler-Cycle"><a href="#D-Minimum-Euler-Cycle" class="headerlink" title="D. Minimum Euler Cycle"></a>D. Minimum Euler Cycle</h2><p>打 表 找 规 律</p>
+<p>可以手玩较小的$n$</p>
+<p>当$n=3$时，字典序最小的欧拉回路长这样<code>1 2 1 3 2 3 1</code></p>
+<p>当$n=4$时是<code>1 2 1 3 1 4 2 3 2 4 3 4 1</code></p>
+<p>已经能看出规律了，<code>1 2 1 3 1 4</code> | <code>2 3 2 4</code> | <code>3 4</code>| <code>1</code></p>
+<p>推测一下$n=5$时是<code>1 2 1 3 1 4 1 5 2 3 2 4 2 5 3 4 3 5 4 5 1</code>，画一下发现好像对了</p>
+<p><a href="https://paste.ubuntu.com/p/TcsFnDzKqD/">代码链接</a></p>
+<h2 id="E-Divisor-Paths"><a href="#E-Divisor-Paths" class="headerlink" title="E. Divisor Paths"></a>E. Divisor Paths</h2><p>结论题</p>
+<p>对于点$u$，把它质因数分解后得到$u=\prod_{i=1}^k p_i^{a_i}$，那么每走一条边就相当于把某个$a_i$加一或减一</p>
+<p>对于$(u,v)$这条边（$v \mid u$），他的边权显然是$d(u)-d(v)$，同时可以知道如果$v \mid u$那么$u$到$v$的最短路一定是$d(u)-d(v)$</p>
+<p>那么对于$u,v$的最短路，一种情况是$u \rightarrow \operatorname{lcm}(u,v) \rightarrow v$，另一种是$u \rightarrow \gcd(u,v) \rightarrow v$</p>
+<p>即先加后减或先减后加</p>
+<p>讨论一下，设$d(u)=xy,d(\operatorname{lcm}(u,v))=(x+p)y,d(\gcd(u,v))=x(y-q),d(v)=(x+p)(y-q)$</p>
+<ul>
+<li><p>$u \rightarrow \operatorname{lcm}(u,v) \rightarrow v$</p>
+<p>长度为$py+qx+pq$</p>
+</li>
+<li><p>$u \rightarrow \gcd(u,v) \rightarrow v$</p>
+<p>长度为$qx+py-pq$</p>
+</li>
+</ul>
+<p>显然走$\gcd$要比$\operatorname{lcm}$优</p>
+<p>剩下的就是计数，变成$v \mid u$的情况，由于指数是一个一个减一的，所以是一个可重集全排列</p>
+<p>然后就做完了，<a href="https://paste.ubuntu.com/p/sk34jFYZQw/">代码链接</a></p>
+<h2 id="F-Strange-Function"><a href="#F-Strange-Function" class="headerlink" title="F. Strange Function"></a>F. Strange Function</h2><p>考虑一个看起来就不太行的$dp$，令$dp_{i,j}$表示$a_{1…i}$在删除若干数过后使得$f([a_1,a_2,\cdots,a_i])=[b_1,b_2,\cdots,b_j]$的最小花费</p>
+<p>考虑用$dp_{i,j}$去更新别的状态，分类讨论一下</p>
+<ul>
+<li><p>删除$a_{i+1}$</p>
+<p>没啥好说的删就删吧，$dp_{i,j}+p_{i+1} \rightarrow dp_{i+1}{j}$</p>
+</li>
+<li><p>不删$a_{i+1}$</p>
+<ul>
+<li><p>当$a_{i+1} \le b_j$的时候可以转移$dp_{i,j} \rightarrow dp_{i+1,j}$</p>
+</li>
+<li><p>$a_{i+1}=b_{j+1}$的时候有转移$dp_{i,j} \rightarrow dp_{i+1,j+1}$</p>
+</li>
+<li><p>如果$a_{i+1}&gt;b_j$且$a_{i+1} \not= b_{j+1}$，在不删除$a_{i+1}$的情况下$dp_{i,j}$无法做任何转移</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>考虑$dp_i$到$dp_{i+1}$之间发生了什么，不删除$a_{i+1}$的转移相当于整体加一个值，能做$a_{i+1} \le b_j$的那类转移一定是一个区间，并且他们的值与$dp_{i,j}$一样，而$a_{i+1}=b_{j+1}$就是一个单点修改的操作</p>
+<p>所以用线段树去维护$dp_i$就好了，<a href="https://paste.ubuntu.com/p/sXQqtx5Z4d/">代码链接</a></p>
+<h2 id="G-Substring-Search"><a href="#G-Substring-Search" class="headerlink" title="G. Substring Search"></a>G. Substring Search</h2><p>类似<a href="https://www.luogu.com.cn/problem/P4173">这道题</a>，考虑卷积匹配</p>
+<p>定义$f_k=\sum\limits_{i=0}^{m-1}(s_i-t_{k+i})^2(p_{s_i}-t_{k+i})^2$</p>
+<p>显然如果$t_{k…k+m-1}$能被匹配那么$f_{k}=0$</p>
+<p>把上面这个柿子展开<del><a href="https://www.wolframalpha.com/input/?i=%28p-x%29%5E2%28q-x%29%5E2">WolframAlpha</a>，你值得拥有</del>，翻转构造卷积即可</p>
+<p>为了防止被卡，模数取的是$1004535809$</p>
+<p>但还是被卡了，只要对每个字符赋一个随机的权值就好了</p>
+<p>刚开始写的时候把$s$和$t$搞反了，但问题不大，<a href="https://paste.ubuntu.com/p/RfBXCKtQ9P/">代码链接</a></p>
+]]></content>
+      <categories>
+        <category>Codeforces</category>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>Codeforces</tag>
+      </tags>
+  </entry>
 </search>

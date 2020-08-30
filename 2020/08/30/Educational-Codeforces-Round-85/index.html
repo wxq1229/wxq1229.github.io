@@ -22,19 +22,19 @@
 
   <meta name="description" content="Link">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AtCoder Regular Contest 092">
-<meta property="og:url" content="http://wxq1229.github.io/2020/08/27/AtCoder-Regular-Contest-092/index.html">
+<meta property="og:title" content="Educational Codeforces Round 85">
+<meta property="og:url" content="http://wxq1229.github.io/2020/08/30/Educational-Codeforces-Round-85/index.html">
 <meta property="og:site_name" content="WXQ&#39;s Blog">
 <meta property="og:description" content="Link">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-27T08:18:44.000Z">
-<meta property="article:modified_time" content="2020-08-27T08:21:04.818Z">
+<meta property="article:published_time" content="2020-08-30T08:19:37.000Z">
+<meta property="article:modified_time" content="2020-08-30T08:20:42.732Z">
 <meta property="article:author" content="wxq1229">
 <meta property="article:tag" content="题解">
-<meta property="article:tag" content="AtCoder">
+<meta property="article:tag" content="Codeforces">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://wxq1229.github.io/2020/08/27/AtCoder-Regular-Contest-092/">
+<link rel="canonical" href="http://wxq1229.github.io/2020/08/30/Educational-Codeforces-Round-85/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>AtCoder Regular Contest 092 | WXQ's Blog</title>
+  <title>Educational Codeforces Round 85 | WXQ's Blog</title>
   
 
 
@@ -186,7 +186,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wxq1229.github.io/2020/08/27/AtCoder-Regular-Contest-092/">
+    <link itemprop="mainEntityOfPage" href="http://wxq1229.github.io/2020/08/30/Educational-Codeforces-Round-85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -199,7 +199,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          AtCoder Regular Contest 092
+          Educational Codeforces Round 85
         </h1>
 
         <div class="post-meta">
@@ -210,7 +210,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-08-27 16:18:44 / Modified: 16:21:04" itemprop="dateCreated datePublished" datetime="2020-08-27T16:18:44+08:00">2020-08-27</time>
+              <time title="Created: 2020-08-30 16:19:37 / Modified: 16:20:42" itemprop="dateCreated datePublished" datetime="2020-08-30T16:19:37+08:00">2020-08-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -218,11 +218,11 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtCoder/" itemprop="url" rel="index"><span itemprop="name">AtCoder</span></a>
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtCoder/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
+                  <a href="/categories/Codeforces/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
                 </span>
             </span>
 
@@ -237,44 +237,62 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/arc092">Link</a></p>
+        <p><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1334">Link</a></p>
 <a id="more"></a>
-<h2 id="C-2D-Plane-2N-Points"><a href="#C-2D-Plane-2N-Points" class="headerlink" title="C. 2D Plane 2N Points"></a>C. 2D Plane 2N Points</h2><p>$N \le 100$，二分图匹配裸题，好像还有个妙妙贪心</p>
-<p>复杂度$\mathcal{O}(N^3)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/arc092/submissions/16177277">评测链接</a></p>
-<h2 id="D-Two-Sequences"><a href="#D-Two-Sequences" class="headerlink" title="D. Two Sequences"></a>D. Two Sequences</h2><p>考虑计算答案二进制下的第$k$位，问题变为统计有多少$(i,j)$使得$a_i+b_j$二进制下第$k$位为$1$</p>
-<p>首先只保留$a_i,b_i$二进制下后$k$位（即对$2^{k+1}$取模），二进制下第$k$位为$1$相当于$2^{k} \le (a_i+b_j) \bmod 2^{k+1}$，分类讨论</p>
+<h2 id="A-Level-Statistics"><a href="#A-Level-Statistics" class="headerlink" title="A. Level Statistics"></a>A. Level Statistics</h2><p>阅读理解题…，<a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/PcsRp5Fqk2/">代码链接</a></p>
+<h2 id="B-Middle-Class"><a href="#B-Middle-Class" class="headerlink" title="B. Middle Class"></a>B. Middle Class</h2><p>贪心，尽量选有钱的人平均分配，<a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/xbxRKF58M3/">代码链接</a></p>
+<h2 id="C-Circle-of-Monsters"><a href="#C-Circle-of-Monsters" class="headerlink" title="C. Circle of Monsters"></a>C. Circle of Monsters</h2><p>怪兽一定是按顺序打过去的，枚举第一个打的是那个顺时针打过去就好了</p>
+<p>前缀和什么的算一下就好了，<a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/BjdvYgpJdh/">代码链接</a></p>
+<h2 id="D-Minimum-Euler-Cycle"><a href="#D-Minimum-Euler-Cycle" class="headerlink" title="D. Minimum Euler Cycle"></a>D. Minimum Euler Cycle</h2><p>打 表 找 规 律</p>
+<p>可以手玩较小的$n$</p>
+<p>当$n=3$时，字典序最小的欧拉回路长这样<code>1 2 1 3 2 3 1</code></p>
+<p>当$n=4$时是<code>1 2 1 3 1 4 2 3 2 4 3 4 1</code></p>
+<p>已经能看出规律了，<code>1 2 1 3 1 4</code> | <code>2 3 2 4</code> | <code>3 4</code>| <code>1</code></p>
+<p>推测一下$n=5$时是<code>1 2 1 3 1 4 1 5 2 3 2 4 2 5 3 4 3 5 4 5 1</code>，画一下发现好像对了</p>
+<p><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/TcsFnDzKqD/">代码链接</a></p>
+<h2 id="E-Divisor-Paths"><a href="#E-Divisor-Paths" class="headerlink" title="E. Divisor Paths"></a>E. Divisor Paths</h2><p>结论题</p>
+<p>对于点$u$，把它质因数分解后得到$u=\prod_{i=1}^k p_i^{a_i}$，那么每走一条边就相当于把某个$a_i$加一或减一</p>
+<p>对于$(u,v)$这条边（$v \mid u$），他的边权显然是$d(u)-d(v)$，同时可以知道如果$v \mid u$那么$u$到$v$的最短路一定是$d(u)-d(v)$</p>
+<p>那么对于$u,v$的最短路，一种情况是$u \rightarrow \operatorname{lcm}(u,v) \rightarrow v$，另一种是$u \rightarrow \gcd(u,v) \rightarrow v$</p>
+<p>即先加后减或先减后加</p>
+<p>讨论一下，设$d(u)=xy,d(\operatorname{lcm}(u,v))=(x+p)y,d(\gcd(u,v))=x(y-q),d(v)=(x+p)(y-q)$</p>
 <ul>
-<li><script type="math/tex">\begin{cases} a_i+b_j < 2^{k+1} \\ a_i+b_j \ge 2^{k} \end{cases}</script>，可以得到$2^{k}-a_i \le b_j &lt; 2^{k+1}-a_i$</li>
-<li><script type="math/tex">\begin{cases} a_i+b_j \ge 2^{k+1} \\ a_i + b_j - 2^{k+1} \ge 2^{k}\end{cases}</script>，可以得到$b_j \ge 2^{k+1}+2^{k}-a_i$</li>
-</ul>
-<p>将$b$排序枚举$a_i$二分即可</p>
-<p>复杂度$\mathcal{O}(N \log N \log V)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/arc092/submissions/16178438">评测链接</a></p>
-<h2 id="E-Both-Sides-Merger"><a href="#E-Both-Sides-Merger" class="headerlink" title="E. Both Sides Merger"></a>E. Both Sides Merger</h2><p>最后剩下的数一定是原序列里若干数的和，且这些数在原序列里下标的奇偶性要相同</p>
-<p>于是答案就是奇数位上正数的和与偶数位上正数的和的最大值</p>
-<p>考虑构造，假设选出来的下标为$p_{1},p_{2},\cdots ,p_M$，先把左右边界的数全部删掉再从左往右合并</p>
-<p>对于两个相邻的位置$p_i,p_{i+1}$， 一直删去两个位置的中点即可（由于两个位置的奇偶性相同，所以一定能删干净）</p>
-<p>注意特判所有数都小于等于$0$的情况</p>
-<p>复杂度$\mathcal{O}(N)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/arc092/submissions/16225683">评测链接</a></p>
-<h2 id="F-Two-Faced-Edges"><a href="#F-Two-Faced-Edges" class="headerlink" title="F. Two Faced Edges"></a>F. Two Faced Edges</h2><p>翻转一条边，把删除和加入分开来看，对于翻转边$u \rightarrow v$</p>
-<ul>
-<li><p>删除边$u \rightarrow v$，如果原来$v$能到达$u$，且$u$不能不通过$u \rightarrow v$这条边到达$v$，那么强联通分量的个数将增加$1$</p>
+<li><p>$u \rightarrow \operatorname{lcm}(u,v) \rightarrow v$</p>
+<p>长度为$py+qx+pq$</p>
 </li>
-<li><p>加入边$v \rightarrow u$，如果原来$u$能不通过$u \rightarrow v$这条边到达$v$，且原来$v$不能到达$u$，那么强联通分量的个数将减少$1$</p>
+<li><p>$u \rightarrow \gcd(u,v) \rightarrow v$</p>
+<p>长度为$qx+py-pq$</p>
 </li>
 </ul>
-<p>只要能判定上面这两个东西就能知道翻转一条边后强联通分量的个数是否会改变了</p>
-<p>我们需要回答两种问题</p>
+<p>显然走$\gcd$要比$\operatorname{lcm}$优</p>
+<p>剩下的就是计数，变成$v \mid u$的情况，由于指数是一个一个减一的，所以是一个可重集全排列</p>
+<p>然后就做完了，<a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/sk34jFYZQw/">代码链接</a></p>
+<h2 id="F-Strange-Function"><a href="#F-Strange-Function" class="headerlink" title="F. Strange Function"></a>F. Strange Function</h2><p>考虑一个看起来就不太行的$dp$，令$dp_{i,j}$表示$a_{1…i}$在删除若干数过后使得$f([a_1,a_2,\cdots,a_i])=[b_1,b_2,\cdots,b_j]$的最小花费</p>
+<p>考虑用$dp_{i,j}$去更新别的状态，分类讨论一下</p>
 <ul>
-<li>原来$u$能否到达$v$</li>
-<li>原来$u$能否不通过$u \rightarrow v$这条边到达$v$</li>
+<li><p>删除$a_{i+1}$</p>
+<p>没啥好说的删就删吧，$dp_{i,j}+p_{i+1} \rightarrow dp_{i+1}{j}$</p>
+</li>
+<li><p>不删$a_{i+1}$</p>
+<ul>
+<li><p>当$a_{i+1} \le b_j$的时候可以转移$dp_{i,j} \rightarrow dp_{i+1,j}$</p>
+</li>
+<li><p>$a_{i+1}=b_{j+1}$的时候有转移$dp_{i,j} \rightarrow dp_{i+1,j+1}$</p>
+</li>
+<li><p>如果$a_{i+1}&gt;b_j$且$a_{i+1} \not= b_{j+1}$，在不删除$a_{i+1}$的情况下$dp_{i,j}$无法做任何转移</p>
+</li>
 </ul>
-<p>对于第一个问题遍历一遍就好，考虑第二个问题</p>
-<p>枚举$u$以及它的出边$u \rightarrow v_1, u \rightarrow v_2, \cdots, u \rightarrow v_M$</p>
-<p>对于一条边$u \rightarrow v_i$，如果$u$到达$v_i$能不经过它，那么经过$u \rightarrow v_1, u \rightarrow v_2, \cdots, u \rightarrow v_{i-1}$或$u \rightarrow v_{i+1}, u \rightarrow v_{i+2}, \cdots, u \rightarrow v_M$这些边就一定能到达$v_i$</p>
-<p>先按$v_1,v_2,\cdots v_M$的顺序进行遍历，对每个点给它标记上第一次到达这个点经过的是那条边</p>
-<p>再按$v_M,v_{M-1},\cdots,v_{1}$遍历，同上对每个点做标记</p>
-<p>于是对于一条边$u \rightarrow v_i$，$u$到达$v_i$能不经过它，当且仅当两次遍历下来$v_i$的标记一样（这时候一定都是$i$）</p>
-<p>复杂度$\mathcal{O}(NM)$，<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/arc092/submissions/16245218">评测链接</a></p>
+</li>
+</ul>
+<p>考虑$dp_i$到$dp_{i+1}$之间发生了什么，不删除$a_{i+1}$的转移相当于整体加一个值，能做$a_{i+1} \le b_j$的那类转移一定是一个区间，并且他们的值与$dp_{i,j}$一样，而$a_{i+1}=b_{j+1}$就是一个单点修改的操作</p>
+<p>所以用线段树去维护$dp_i$就好了，<a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/sXQqtx5Z4d/">代码链接</a></p>
+<h2 id="G-Substring-Search"><a href="#G-Substring-Search" class="headerlink" title="G. Substring Search"></a>G. Substring Search</h2><p>类似<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4173">这道题</a>，考虑卷积匹配</p>
+<p>定义$f_k=\sum\limits_{i=0}^{m-1}(s_i-t_{k+i})^2(p_{s_i}-t_{k+i})^2$</p>
+<p>显然如果$t_{k…k+m-1}$能被匹配那么$f_{k}=0$</p>
+<p>把上面这个柿子展开<del><a target="_blank" rel="noopener" href="https://www.wolframalpha.com/input/?i=%28p-x%29%5E2%28q-x%29%5E2">WolframAlpha</a>，你值得拥有</del>，翻转构造卷积即可</p>
+<p>为了防止被卡，模数取的是$1004535809$</p>
+<p>但还是被卡了，只要对每个字符赋一个随机的权值就好了</p>
+<p>刚开始写的时候把$s$和$t$搞反了，但问题不大，<a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/RfBXCKtQ9P/">代码链接</a></p>
 
     </div>
 
@@ -285,7 +303,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
-              <a href="/tags/AtCoder/" rel="tag"># AtCoder</a>
+              <a href="/tags/Codeforces/" rel="tag"># Codeforces</a>
           </div>
 
         
@@ -294,13 +312,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/20/NOMURA-Programming-Competition-2020/" rel="prev" title="NOMURA Programming Competition 2020">
-      <i class="fa fa-chevron-left"></i> NOMURA Programming Competition 2020
+    <a href="/2020/08/27/AtCoder-Regular-Contest-092/" rel="prev" title="AtCoder Regular Contest 092">
+      <i class="fa fa-chevron-left"></i> AtCoder Regular Contest 092
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/08/30/Educational-Codeforces-Round-85/" rel="next" title="Educational Codeforces Round 85">
-      Educational Codeforces Round 85 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -360,7 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-2D-Plane-2N-Points"><span class="nav-number">1.</span> <span class="nav-text">C. 2D Plane 2N Points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Two-Sequences"><span class="nav-number">2.</span> <span class="nav-text">D. Two Sequences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Both-Sides-Merger"><span class="nav-number">3.</span> <span class="nav-text">E. Both Sides Merger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Two-Faced-Edges"><span class="nav-number">4.</span> <span class="nav-text">F. Two Faced Edges</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Level-Statistics"><span class="nav-number">1.</span> <span class="nav-text">A. Level Statistics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Middle-Class"><span class="nav-number">2.</span> <span class="nav-text">B. Middle Class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Circle-of-Monsters"><span class="nav-number">3.</span> <span class="nav-text">C. Circle of Monsters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Minimum-Euler-Cycle"><span class="nav-number">4.</span> <span class="nav-text">D. Minimum Euler Cycle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Divisor-Paths"><span class="nav-number">5.</span> <span class="nav-text">E. Divisor Paths</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Strange-Function"><span class="nav-number">6.</span> <span class="nav-text">F. Strange Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G-Substring-Search"><span class="nav-number">7.</span> <span class="nav-text">G. Substring Search</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
