@@ -52,75 +52,6 @@
       </tags>
   </entry>
   <entry>
-    <title>AtCoder Regular Contest 101</title>
-    <url>/2020/08/12/AtCoder-Regular-Contest-101/</url>
-    <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc101">Link</a></p>
-<a id="more"></a>
-<h2 id="C-Candles"><a href="#C-Candles" class="headerlink" title="C. Candles"></a>C. Candles</h2><p>被点燃蜡烛一定在一个区间内，枚举这个区间计算即可</p>
-<p>复杂度$\mathcal{O}(N)$，<a href="https://atcoder.jp/contests/arc101/submissions/15829782">评测链接</a></p>
-<h2 id="D-Median-of-Medians"><a href="#D-Median-of-Medians" class="headerlink" title="D. Median of Medians"></a>D. Median of Medians</h2><p>对于一个长度为$N$的序列，它的median一定满足以下条件：</p>
-<ul>
-<li>序列中小于等于median的数（包括本身）的个数$\times 2 &gt; N$</li>
-<li>median应为满足上面那个条件的最小的数</li>
-</ul>
-<p>二分，假设二分到的数为$x$，问题变为找有多少$m_{l,r}$，满足$m_{l,r} \le x$。</p>
-<p>$m_{l,r} \le x$当且仅当$A_l…A_r$内小于等于$x$的数的数量<strong>超过</strong>一半（不能等于）</p>
-<p>构造一个序列$d$，如果$A_i \le x$那么$d_i=1$，否则$d_i=-1$</p>
-<p>那么$m$ 数量即为$d$上区间和大于$1$的区间个数</p>
-<p>对$d$做前缀和得到$s$（$s_0=0$），问题变为有多少有序对$(i,j)$，满足</p>
-<ul>
-<li>$0 \le i &lt; j \le N$ 且 $s_j&gt;s_i$</li>
-</ul>
-<p>树状数组计算顺序对的个数即可</p>
-<p>复杂度$\mathcal{O}(N \log^2N)$，<a href="https://atcoder.jp/contests/arc101/submissions/15831453">评测链接</a></p>
-<h2 id="E-Ribbons-on-Tree"><a href="#E-Ribbons-on-Tree" class="headerlink" title="E. Ribbons on Tree"></a>E. Ribbons on Tree</h2><p>要求所有边都被覆盖到，不妨考虑容斥</p>
-<p>定义$f(S)$表示满足下面条件的方案数：</p>
-<ul>
-<li>对于集合$S$中的边，一定不能被覆盖到，其他点随意两两匹配的方案数</li>
-</ul>
-<p>那么最后的答案即为$\sum_{S \subseteq E} (-1)^{\mid S\mid}f(S)$</p>
-<p>如果限制了一条边不能被覆盖，那么就可以把这条边删去，这样会把树分成若干个连通块</p>
-<p>那么$f(S)$就是每个连通块中点两两匹配的方案数的乘积</p>
-<p>定义$g(N)$表示$N$个点两两匹配的方案数，那么有</p>
-<script type="math/tex; mode=display">
-g(N) = \begin{cases}
-(N-1)(N-3)\cdots 1 \quad (2 \mid N) \\
-0 \quad\quad\quad\quad\quad\quad\quad\quad \ \ \ \ \  (2 \not\mid N)
-\end{cases}</script><p>即第$1$个点有$N-1$个点可供匹配，去除两个后剩下来的第二个待匹配点有$N-3$个点共匹配</p>
-<p>考虑树形DP出上面那个式子的值</p>
-<p>定义$dp(u,i)$表示在点$u$的子树中，点$u$所在连通块大小为$i$时对答案的贡献总和（不算$i$所在连通块的贡献）</p>
-<p>枚举儿子$v$讨论割或者不割$(u,v)$这条边的贡献。如果割，那么要乘上一个$-1$的常数。</p>
-<p>类似树上背包那样转移即可</p>
-<p>复杂度$\mathcal{O}(N^2)$，<a href="https://atcoder.jp/contests/arc101/submissions/15659672">评测链接</a></p>
-<h2 id="F-Robots-and-Exits"><a href="#F-Robots-and-Exits" class="headerlink" title="F. Robots and Exits"></a>F. Robots and Exits</h2><p>一个机器人只能从在他左边或右边最近的出口出去</p>
-<p>同时删去在第一个出口左边、在最后一个出口右边和原来就在出口上的机器人不会影响答案（因为他们能匹配的出口就一个）</p>
-<p>对于第$i$个机器人，令$x_i$表示它到它左边离它最近的出口的距离，$y_i$表示它到它右边离它最近的出口的距离</p>
-<p>把这个点$(x_i,y_i)$放到直角坐标系下</p>
-<p>在一个时刻，影响一个机器人是否消失的条件只有</p>
-<ul>
-<li>向左走走到最远的位置到原来位置的距离</li>
-<li>向右走走到最远的位置到原来位置的距离</li>
-</ul>
-<p>不妨用一个二元组$(l,r)$来表示当前的状态</p>
-<p>对于还未消失的机器人$i$，如果$l=x_i$或者$r=y_i$那么这个机器人就一定会在当前时刻消失，分别表示从左边/右边的出口出去</p>
-<p>我们可以通过不断向左或向右移动，使得$(l,r) \rightarrow (l+1,r)$或$(l,r+1)$。</p>
-<p>考虑一个DP，令$dp_i$表示最后一个从右边出去的机器人为$i$时的匹配方案数</p>
-<p>有转移$dp_i = 1+\sum\limits_{x_j&lt;x_i,y_j&lt;y_i} dp_j$</p>
-<p>即枚举上一个从右边出去的$j$（且$i$在这段时间内没有消失），然后一直使$l+1$让中间那段机器人从左边走，然后再向右让$i$从右边走掉。加$1$表示$i$是第一个从右边消失的机器人</p>
-<p>然后答案即$1+\sum_{i=1}^N dp_i$（加$1$表示所有机器人都从左边走）</p>
-<p>按照$x$为第一关键字（从小到大）$y$为第二关键字（<strong>从大到小</strong>）排序后用树状数组维护$y$的限制转移即可</p>
-<p>复杂度$\mathcal{O}(N \log N)$，<a href="https://atcoder.jp/contests/arc101/submissions/15845816">评测链接</a></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>AtCoder</category>
-      </categories>
-      <tags>
-        <tag>AtCoder</tag>
-        <tag>题解</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Codeforces Round #672 (Div. 2)</title>
     <url>/2020/10/31/Codeforces-Round-672-Div-2/</url>
     <content><![CDATA[<p><del>诈 尸</del></p>
@@ -173,78 +104,6 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
       <tags>
         <tag>题解</tag>
         <tag>Codeforces</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dwango Programming Contest 6th</title>
-    <url>/2020/08/15/Dwango-Programming-Contest-6th/</url>
-    <content><![CDATA[<p><a href="https://atcoder.jp/contests/dwacon6th-prelims">Link</a></p>
-<a id="more"></a>
-<h2 id="A-Falling-Asleep"><a href="#A-Falling-Asleep" class="headerlink" title="A. Falling Asleep"></a>A. Falling Asleep</h2><p>难/kk，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15883987">评测链接</a></p>
-<h2 id="B-Fusing-Slimes"><a href="#B-Fusing-Slimes" class="headerlink" title="B. Fusing Slimes"></a>B. Fusing Slimes</h2><p>由期望的线性性可以把$N-1$个间隙分开来考虑，设$f_i$表示左边有$i$只slime的一段区间期望被经过多少次</p>
-<p>那么答案就是$\sum_{i=1}^{N-1} (x_{i+1}-x_i)f_i$</p>
-<p>考虑计算$f_i$，首先第一次如果就抽到线段左边第一个点的话那么经过次数会加1，不然就变成$i-1$个slime的情况</p>
-<p>因此$f_i=\frac{1}{i}+f_{i-1}$，递推即可</p>
-<p>复杂度$\mathcal{O}(N)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15885372">评测链接</a></p>
-<h2 id="C-Cookie-Distribution"><a href="#C-Cookie-Distribution" class="headerlink" title="C. Cookie Distribution"></a>C. Cookie Distribution</h2><p>最后乘上组合数相当于直接统计所有分配方案下小朋友们的愉悦度总和</p>
-<p>看起来没啥思路，注意到最后那个乘法，$c_i$相当于在小朋友$i$获得的$c_i$块饼干中抢走一块的方案数，最后从每个小朋友手中抢走一块饼干</p>
-<p>考虑DP，令$dp_{i,j}$表示分配完前$i$天，有$j$个小朋友已经被抢走一个饼干的方案数</p>
-<p>枚举第$i+1$天被抢走刚分配到的饼干的小朋友的数量转移即可</p>
-<p>复杂度$\mathcal{O}(KN^2)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15885734">评测链接</a></p>
-<h2 id="D-Arrangement"><a href="#D-Arrangement" class="headerlink" title="D. Arrangement"></a>D. Arrangement</h2><p><del>搜，都可以搜</del></p>
-<p>相当于找补图中字典序最小的哈密顿路径</p>
-<p>这$N \le 10^5$完全没想法啊</p>
-<p>但是补图比较稠密，所以随便搜出一条路径的概率还是挺大的，考虑乱搞</p>
-<p>直接爆搜，但枝还是要剪的，不然一个$-1$就起飞了</p>
-<ul>
-<li><p>考虑搜出的当前路经中最后一个点$u$，如果$a_u$不在搜到的路径上，且$a_u$不能放在所有不在搜到路径上的点的右边那么当前状态显然不可能搜出一条合法的路径</p>
-</li>
-<li><p>另外可以维护一下下一个点的最小值</p>
-</li>
-</ul>
-<p>加了这两个剪枝过后跑的飞快/cy</p>
-<p>复杂度$\mathcal{O}(?)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15886644">评测链接</a></p>
-<h2 id="E-Span-Covering"><a href="#E-Span-Covering" class="headerlink" title="E. Span Covering"></a>E. Span Covering</h2><p>限制所有整点都要被覆盖到，考虑容斥，枚举$k$个未被覆盖的点$p_1,p_2,\cdots,p_k$，会把$[0,X)$从左往右依次分成$[0,p_1),[p1+1,p_2),\cdots ,[p_{k-1}+1,p_k),[p_k+1,X)$这$k+1$个小区间</p>
-<p>设这些区间的长度分别是$S_1,S_2,\cdots,S_{k+1}$（$S_i \ge 0$）</p>
-<p>那么第$i$个sheet，他就有$\sum\limits_{S_j+1 \ge L_i} S_j-L_i+1$种摆放方式，所以这种情况下总共有$\prod_{i=1}^N \sum\limits_{S_j+1 \ge L_i} S_j-L_i+1$个不同方案</p>
-<p>将所有情况下的摆放方案乘上一个容斥系数$(-1)^k$求和即可</p>
-<p>考虑给定$k$如何求所有满足限制的方案的和</p>
-<p>首先由于强制不能被覆盖的点$p$可能会相邻或者在左右边界上，这些都会使$S_i=0$，也就是说我们并不知道$S$的和，不是很方便算方案数</p>
-<p>不妨让所有$S$加$1$，这时候显然有$\sum S_j=X+1$，让$X$也加$1$好了</p>
-<p>于是柿子变成枚举所有的$\sum_{j=1}^{k+1} S_j=X(S_j \ge 1)$，对$\prod_{i=1}^N \sum\limits_{S_j \ge L_i} S_j-L_i$求和</p>
-<p>考虑DP，为了方便我们强制$S$从大到小排列只要在最后乘上可重集的排列数就好了</p>
-<p>令$dp_{l,c,x}$表示$k=c-1$，$S_1 \ge S_2 \ge \cdots S_{c} &gt; l$，$\sum S_j=x$时上面柿子的和（同时限制柿子中的$L_i &gt; l$）</p>
-<p>在用$dp_{l}$更新$dp_{l-1}$的时候先算前面几个sheet所代表的因式的贡献再乘上$L_i=l$这些sheet所代表的因式的贡献也就是$x-cL_i$即可</p>
-<p>复杂度$\mathcal{O}(X^3)$左右，不会算/kk，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15904207">评测链接</a></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>AtCoder</category>
-      </categories>
-      <tags>
-        <tag>AtCoder</tag>
-        <tag>题解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LuoguP6835 [Cnoi2020]线形生物</title>
-    <url>/2020/09/26/LuoguP6835-Cnoi2020-%E7%BA%BF%E5%BD%A2%E7%94%9F%E7%89%A9/</url>
-    <content><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P6835">Link</a></p>
-<p>一起来% <a href="https://www.luogu.com.cn/user/220037">w33z</a>吧！</p>
-<a id="more"></a>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>令$d_i$表示$i$向前连的返祖边的条数</p>
-<p>先考虑一个DP，令$dp_i$表示点$i$到$n+1$的步数的期望，于是有转移</p>
-<script type="math/tex; mode=display">dp_i = \frac{1}{d_i+1}(dp_{i+1} + \sum\limits_{j \leftarrow i} dp_j) + 1</script><p>边界是$dp_{n+1} = 0$，我们想求出$dp_{1}$</p>
-<p>不好转移，我们发现与$dp_i$有关的状态有$i$通过返祖边连向的前面的节点以及$dp_{i+1}$</p>
-<p>来推推柿子</p>
-<script type="math/tex; mode=display">(d_i+1) dp_i = dp_{i+1} + d_i + 1 + \sum\limits_{j \leftarrow i} dp_j</script><script type="math/tex; mode=display">dp_{i+1} = (d_i+1) dp_i - d_i - 1 - \sum\limits_{j \leftarrow i} dp_j</script><p>观察到所有$dp_i$都可以用$dp_1$表示，即$dp_i = k_i dp_0 + b_i$</p>
-<p>显然$k_1 = 1, b_1 = 0$，于是我们能递推出$k_i,b_i$，然后得到一个等式$k_{n+1} dp_1 + b_{n+1} = dp_{n+1} = 0$，解方程即可</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P = <span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mpow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; b; b &gt;&gt;= <span class="number">1</span>, a = (ll) a * a % P)</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) ans = (ll) ans * a % P;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x += y;</span><br><span class="line">    <span class="keyword">if</span> (x &gt;= P) x -= P;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x -= y;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) x += P;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">line</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> k, b;</span><br><span class="line">    line <span class="keyword">operator</span>+(<span class="keyword">const</span> line &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;add(k, o.k), add(b, o.b)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>-(<span class="keyword">const</span> line &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;sub(k, o.k), sub(b, o.b)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;(ll) k * o % P, (ll) b * o % P&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>-(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;k, sub(b, o)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;k, add(b, o)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; g[N];</span><br><span class="line"><span class="keyword">int</span> d[N];</span><br><span class="line">line f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> f__k, n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; f__k &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        --u, --v;</span><br><span class="line">        g[u].push_back(v);</span><br><span class="line">        ++d[u];</span><br><span class="line">    &#125;</span><br><span class="line">    f[<span class="number">0</span>] = &#123;<span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        line tmp = f[i] * (d[i] + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> j : g[i])</span><br><span class="line">            tmp = tmp - f[j];</span><br><span class="line">        tmp = tmp - d[i] - <span class="number">1</span>;</span><br><span class="line">        f[i + <span class="number">1</span>] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (ll) (P - f[n].b) * mpow(f[n].k, P - <span class="number">2</span>) % P;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
       </tags>
   </entry>
   <entry>
@@ -317,6 +176,27 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
       </tags>
   </entry>
   <entry>
+    <title>LuoguP6835 [Cnoi2020]线形生物</title>
+    <url>/2020/09/26/LuoguP6835-Cnoi2020-%E7%BA%BF%E5%BD%A2%E7%94%9F%E7%89%A9/</url>
+    <content><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P6835">Link</a></p>
+<p>一起来% <a href="https://www.luogu.com.cn/user/220037">w33z</a>吧！</p>
+<a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>令$d_i$表示$i$向前连的返祖边的条数</p>
+<p>先考虑一个DP，令$dp_i$表示点$i$到$n+1$的步数的期望，于是有转移</p>
+<script type="math/tex; mode=display">dp_i = \frac{1}{d_i+1}(dp_{i+1} + \sum\limits_{j \leftarrow i} dp_j) + 1</script><p>边界是$dp_{n+1} = 0$，我们想求出$dp_{1}$</p>
+<p>不好转移，我们发现与$dp_i$有关的状态有$i$通过返祖边连向的前面的节点以及$dp_{i+1}$</p>
+<p>来推推柿子</p>
+<script type="math/tex; mode=display">(d_i+1) dp_i = dp_{i+1} + d_i + 1 + \sum\limits_{j \leftarrow i} dp_j</script><script type="math/tex; mode=display">dp_{i+1} = (d_i+1) dp_i - d_i - 1 - \sum\limits_{j \leftarrow i} dp_j</script><p>观察到所有$dp_i$都可以用$dp_1$表示，即$dp_i = k_i dp_0 + b_i$</p>
+<p>显然$k_1 = 1, b_1 = 0$，于是我们能递推出$k_i,b_i$，然后得到一个等式$k_{n+1} dp_1 + b_{n+1} = dp_{n+1} = 0$，解方程即可</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P = <span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mpow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; b; b &gt;&gt;= <span class="number">1</span>, a = (ll) a * a % P)</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) ans = (ll) ans * a % P;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x += y;</span><br><span class="line">    <span class="keyword">if</span> (x &gt;= P) x -= P;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x -= y;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) x += P;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">line</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> k, b;</span><br><span class="line">    line <span class="keyword">operator</span>+(<span class="keyword">const</span> line &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;add(k, o.k), add(b, o.b)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>-(<span class="keyword">const</span> line &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;sub(k, o.k), sub(b, o.b)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;(ll) k * o % P, (ll) b * o % P&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>-(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;k, sub(b, o)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;k, add(b, o)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; g[N];</span><br><span class="line"><span class="keyword">int</span> d[N];</span><br><span class="line">line f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> f__k, n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; f__k &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        --u, --v;</span><br><span class="line">        g[u].push_back(v);</span><br><span class="line">        ++d[u];</span><br><span class="line">    &#125;</span><br><span class="line">    f[<span class="number">0</span>] = &#123;<span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        line tmp = f[i] * (d[i] + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> j : g[i])</span><br><span class="line">            tmp = tmp - f[j];</span><br><span class="line">        tmp = tmp - d[i] - <span class="number">1</span>;</span><br><span class="line">        f[i + <span class="number">1</span>] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (ll) (P - f[n].b) * mpow(f[n].k, P - <span class="number">2</span>) % P;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NOMURA Programming Competition 2020</title>
     <url>/2020/08/20/NOMURA-Programming-Competition-2020/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/nomura2020">Link</a></p>
@@ -377,6 +257,57 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
 </ul>
 <p>于是$dp_{i,j} = dp_{i-1,j} \times (j+1) + \sum\limits_{k=1}^{j-1} 2^{j-k-1} \times k \times dp_{i-1,k}$，用前缀和优化转移即可</p>
 <p>复杂度$\mathcal{O}(NM)$，<a href="https://atcoder.jp/contests/nomura2020/submissions/16023250">评测链接</a></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>AtCoder</tag>
+        <tag>题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dwango Programming Contest 6th</title>
+    <url>/2020/08/15/Dwango-Programming-Contest-6th/</url>
+    <content><![CDATA[<p><a href="https://atcoder.jp/contests/dwacon6th-prelims">Link</a></p>
+<a id="more"></a>
+<h2 id="A-Falling-Asleep"><a href="#A-Falling-Asleep" class="headerlink" title="A. Falling Asleep"></a>A. Falling Asleep</h2><p>难/kk，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15883987">评测链接</a></p>
+<h2 id="B-Fusing-Slimes"><a href="#B-Fusing-Slimes" class="headerlink" title="B. Fusing Slimes"></a>B. Fusing Slimes</h2><p>由期望的线性性可以把$N-1$个间隙分开来考虑，设$f_i$表示左边有$i$只slime的一段区间期望被经过多少次</p>
+<p>那么答案就是$\sum_{i=1}^{N-1} (x_{i+1}-x_i)f_i$</p>
+<p>考虑计算$f_i$，首先第一次如果就抽到线段左边第一个点的话那么经过次数会加1，不然就变成$i-1$个slime的情况</p>
+<p>因此$f_i=\frac{1}{i}+f_{i-1}$，递推即可</p>
+<p>复杂度$\mathcal{O}(N)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15885372">评测链接</a></p>
+<h2 id="C-Cookie-Distribution"><a href="#C-Cookie-Distribution" class="headerlink" title="C. Cookie Distribution"></a>C. Cookie Distribution</h2><p>最后乘上组合数相当于直接统计所有分配方案下小朋友们的愉悦度总和</p>
+<p>看起来没啥思路，注意到最后那个乘法，$c_i$相当于在小朋友$i$获得的$c_i$块饼干中抢走一块的方案数，最后从每个小朋友手中抢走一块饼干</p>
+<p>考虑DP，令$dp_{i,j}$表示分配完前$i$天，有$j$个小朋友已经被抢走一个饼干的方案数</p>
+<p>枚举第$i+1$天被抢走刚分配到的饼干的小朋友的数量转移即可</p>
+<p>复杂度$\mathcal{O}(KN^2)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15885734">评测链接</a></p>
+<h2 id="D-Arrangement"><a href="#D-Arrangement" class="headerlink" title="D. Arrangement"></a>D. Arrangement</h2><p><del>搜，都可以搜</del></p>
+<p>相当于找补图中字典序最小的哈密顿路径</p>
+<p>这$N \le 10^5$完全没想法啊</p>
+<p>但是补图比较稠密，所以随便搜出一条路径的概率还是挺大的，考虑乱搞</p>
+<p>直接爆搜，但枝还是要剪的，不然一个$-1$就起飞了</p>
+<ul>
+<li><p>考虑搜出的当前路经中最后一个点$u$，如果$a_u$不在搜到的路径上，且$a_u$不能放在所有不在搜到路径上的点的右边那么当前状态显然不可能搜出一条合法的路径</p>
+</li>
+<li><p>另外可以维护一下下一个点的最小值</p>
+</li>
+</ul>
+<p>加了这两个剪枝过后跑的飞快/cy</p>
+<p>复杂度$\mathcal{O}(?)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15886644">评测链接</a></p>
+<h2 id="E-Span-Covering"><a href="#E-Span-Covering" class="headerlink" title="E. Span Covering"></a>E. Span Covering</h2><p>限制所有整点都要被覆盖到，考虑容斥，枚举$k$个未被覆盖的点$p_1,p_2,\cdots,p_k$，会把$[0,X)$从左往右依次分成$[0,p_1),[p1+1,p_2),\cdots ,[p_{k-1}+1,p_k),[p_k+1,X)$这$k+1$个小区间</p>
+<p>设这些区间的长度分别是$S_1,S_2,\cdots,S_{k+1}$（$S_i \ge 0$）</p>
+<p>那么第$i$个sheet，他就有$\sum\limits_{S_j+1 \ge L_i} S_j-L_i+1$种摆放方式，所以这种情况下总共有$\prod_{i=1}^N \sum\limits_{S_j+1 \ge L_i} S_j-L_i+1$个不同方案</p>
+<p>将所有情况下的摆放方案乘上一个容斥系数$(-1)^k$求和即可</p>
+<p>考虑给定$k$如何求所有满足限制的方案的和</p>
+<p>首先由于强制不能被覆盖的点$p$可能会相邻或者在左右边界上，这些都会使$S_i=0$，也就是说我们并不知道$S$的和，不是很方便算方案数</p>
+<p>不妨让所有$S$加$1$，这时候显然有$\sum S_j=X+1$，让$X$也加$1$好了</p>
+<p>于是柿子变成枚举所有的$\sum_{j=1}^{k+1} S_j=X(S_j \ge 1)$，对$\prod_{i=1}^N \sum\limits_{S_j \ge L_i} S_j-L_i$求和</p>
+<p>考虑DP，为了方便我们强制$S$从大到小排列只要在最后乘上可重集的排列数就好了</p>
+<p>令$dp_{l,c,x}$表示$k=c-1$，$S_1 \ge S_2 \ge \cdots S_{c} &gt; l$，$\sum S_j=x$时上面柿子的和（同时限制柿子中的$L_i &gt; l$）</p>
+<p>在用$dp_{l}$更新$dp_{l-1}$的时候先算前面几个sheet所代表的因式的贡献再乘上$L_i=l$这些sheet所代表的因式的贡献也就是$x-cL_i$即可</p>
+<p>复杂度$\mathcal{O}(X^3)$左右，不会算/kk，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15904207">评测链接</a></p>
 ]]></content>
       <categories>
         <category>题解</category>
@@ -470,6 +401,75 @@ F^{-1}(x) \equiv 2H(x)-H(x)F(x)H(x) \pmod{x^n}</script><p>右边也就是那个$
         <category>题解</category>
       </categories>
       <tags>
+        <tag>题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AtCoder Regular Contest 101</title>
+    <url>/2020/08/12/AtCoder-Regular-Contest-101/</url>
+    <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc101">Link</a></p>
+<a id="more"></a>
+<h2 id="C-Candles"><a href="#C-Candles" class="headerlink" title="C. Candles"></a>C. Candles</h2><p>被点燃蜡烛一定在一个区间内，枚举这个区间计算即可</p>
+<p>复杂度$\mathcal{O}(N)$，<a href="https://atcoder.jp/contests/arc101/submissions/15829782">评测链接</a></p>
+<h2 id="D-Median-of-Medians"><a href="#D-Median-of-Medians" class="headerlink" title="D. Median of Medians"></a>D. Median of Medians</h2><p>对于一个长度为$N$的序列，它的median一定满足以下条件：</p>
+<ul>
+<li>序列中小于等于median的数（包括本身）的个数$\times 2 &gt; N$</li>
+<li>median应为满足上面那个条件的最小的数</li>
+</ul>
+<p>二分，假设二分到的数为$x$，问题变为找有多少$m_{l,r}$，满足$m_{l,r} \le x$。</p>
+<p>$m_{l,r} \le x$当且仅当$A_l…A_r$内小于等于$x$的数的数量<strong>超过</strong>一半（不能等于）</p>
+<p>构造一个序列$d$，如果$A_i \le x$那么$d_i=1$，否则$d_i=-1$</p>
+<p>那么$m$ 数量即为$d$上区间和大于$1$的区间个数</p>
+<p>对$d$做前缀和得到$s$（$s_0=0$），问题变为有多少有序对$(i,j)$，满足</p>
+<ul>
+<li>$0 \le i &lt; j \le N$ 且 $s_j&gt;s_i$</li>
+</ul>
+<p>树状数组计算顺序对的个数即可</p>
+<p>复杂度$\mathcal{O}(N \log^2N)$，<a href="https://atcoder.jp/contests/arc101/submissions/15831453">评测链接</a></p>
+<h2 id="E-Ribbons-on-Tree"><a href="#E-Ribbons-on-Tree" class="headerlink" title="E. Ribbons on Tree"></a>E. Ribbons on Tree</h2><p>要求所有边都被覆盖到，不妨考虑容斥</p>
+<p>定义$f(S)$表示满足下面条件的方案数：</p>
+<ul>
+<li>对于集合$S$中的边，一定不能被覆盖到，其他点随意两两匹配的方案数</li>
+</ul>
+<p>那么最后的答案即为$\sum_{S \subseteq E} (-1)^{\mid S\mid}f(S)$</p>
+<p>如果限制了一条边不能被覆盖，那么就可以把这条边删去，这样会把树分成若干个连通块</p>
+<p>那么$f(S)$就是每个连通块中点两两匹配的方案数的乘积</p>
+<p>定义$g(N)$表示$N$个点两两匹配的方案数，那么有</p>
+<script type="math/tex; mode=display">
+g(N) = \begin{cases}
+(N-1)(N-3)\cdots 1 \quad (2 \mid N) \\
+0 \quad\quad\quad\quad\quad\quad\quad\quad \ \ \ \ \  (2 \not\mid N)
+\end{cases}</script><p>即第$1$个点有$N-1$个点可供匹配，去除两个后剩下来的第二个待匹配点有$N-3$个点共匹配</p>
+<p>考虑树形DP出上面那个式子的值</p>
+<p>定义$dp(u,i)$表示在点$u$的子树中，点$u$所在连通块大小为$i$时对答案的贡献总和（不算$i$所在连通块的贡献）</p>
+<p>枚举儿子$v$讨论割或者不割$(u,v)$这条边的贡献。如果割，那么要乘上一个$-1$的常数。</p>
+<p>类似树上背包那样转移即可</p>
+<p>复杂度$\mathcal{O}(N^2)$，<a href="https://atcoder.jp/contests/arc101/submissions/15659672">评测链接</a></p>
+<h2 id="F-Robots-and-Exits"><a href="#F-Robots-and-Exits" class="headerlink" title="F. Robots and Exits"></a>F. Robots and Exits</h2><p>一个机器人只能从在他左边或右边最近的出口出去</p>
+<p>同时删去在第一个出口左边、在最后一个出口右边和原来就在出口上的机器人不会影响答案（因为他们能匹配的出口就一个）</p>
+<p>对于第$i$个机器人，令$x_i$表示它到它左边离它最近的出口的距离，$y_i$表示它到它右边离它最近的出口的距离</p>
+<p>把这个点$(x_i,y_i)$放到直角坐标系下</p>
+<p>在一个时刻，影响一个机器人是否消失的条件只有</p>
+<ul>
+<li>向左走走到最远的位置到原来位置的距离</li>
+<li>向右走走到最远的位置到原来位置的距离</li>
+</ul>
+<p>不妨用一个二元组$(l,r)$来表示当前的状态</p>
+<p>对于还未消失的机器人$i$，如果$l=x_i$或者$r=y_i$那么这个机器人就一定会在当前时刻消失，分别表示从左边/右边的出口出去</p>
+<p>我们可以通过不断向左或向右移动，使得$(l,r) \rightarrow (l+1,r)$或$(l,r+1)$。</p>
+<p>考虑一个DP，令$dp_i$表示最后一个从右边出去的机器人为$i$时的匹配方案数</p>
+<p>有转移$dp_i = 1+\sum\limits_{x_j&lt;x_i,y_j&lt;y_i} dp_j$</p>
+<p>即枚举上一个从右边出去的$j$（且$i$在这段时间内没有消失），然后一直使$l+1$让中间那段机器人从左边走，然后再向右让$i$从右边走掉。加$1$表示$i$是第一个从右边消失的机器人</p>
+<p>然后答案即$1+\sum_{i=1}^N dp_i$（加$1$表示所有机器人都从左边走）</p>
+<p>按照$x$为第一关键字（从小到大）$y$为第二关键字（<strong>从大到小</strong>）排序后用树状数组维护$y$的限制转移即可</p>
+<p>复杂度$\mathcal{O}(N \log N)$，<a href="https://atcoder.jp/contests/arc101/submissions/15845816">评测链接</a></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>AtCoder</tag>
         <tag>题解</tag>
       </tags>
   </entry>
