@@ -4,9 +4,9 @@
     <title>AtCoder Regular Contest 092</title>
     <url>/2020/08/27/AtCoder-Regular-Contest-092/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc092">Link</a></p>
-<a id="more"></a>
 <h2 id="C-2D-Plane-2N-Points"><a href="#C-2D-Plane-2N-Points" class="headerlink" title="C. 2D Plane 2N Points"></a>C. 2D Plane 2N Points</h2><p>$N \le 100$，二分图匹配裸题，好像还有个妙妙贪心</p>
 <p>复杂度$\mathcal{O}(N^3)$，<a href="https://atcoder.jp/contests/arc092/submissions/16177277">评测链接</a></p>
+<a id="more"></a>
 <h2 id="D-Two-Sequences"><a href="#D-Two-Sequences" class="headerlink" title="D. Two Sequences"></a>D. Two Sequences</h2><p>考虑计算答案二进制下的第$k$位，问题变为统计有多少$(i,j)$使得$a_i+b_j$二进制下第$k$位为$1$</p>
 <p>首先只保留$a_i,b_i$二进制下后$k$位（即对$2^{k+1}$取模），二进制下第$k$位为$1$相当于$2^{k} \le (a_i+b_j) \bmod 2^{k+1}$，分类讨论</p>
 <ul>
@@ -56,9 +56,9 @@
     <url>/2020/10/31/Codeforces-Round-672-Div-2/</url>
     <content><![CDATA[<p><del>诈 尸</del></p>
 <p><a href="https://codeforces.ml/contest/1420">Link</a></p>
-<a id="more"></a>
 <h2 id="A-Cubes-Sorting"><a href="#A-Cubes-Sorting" class="headerlink" title="A. Cubes Sorting"></a>A. Cubes Sorting</h2><p>显然要让最小的数先一路换到第一个位置然后考虑次小的</p>
 <p>判断一下就好了，<a href="https://paste.ubuntu.com/p/m4Dh7hncJg/">代码链接</a></p>
+<a id="more"></a>
 <h2 id="B-Rock-and-Lever"><a href="#B-Rock-and-Lever" class="headerlink" title="B. Rock and Lever"></a>B. Rock and Lever</h2><p>考虑从高位到低位逐位比较大小，发现$x \&amp; y \ge x \oplus y$的充分必要条件是$x,y$最高位的$1$所在的位置相同（否则$x,y$中最高的$1$所在的那位and是$0$，xor是$1$）</p>
 <p>开个桶记一下即可，<a href="https://paste.ubuntu.com/p/yfCjg3Fmv5/">代码链接</a></p>
 <h2 id="C-Pokemon-Army"><a href="#C-Pokemon-Army" class="headerlink" title="C. Pokémon Army"></a>C. Pokémon Army</h2><p>只会矩乘的又傻又慢的做法/kk</p>
@@ -110,9 +110,9 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
     <title>Educational Codeforces Round 85</title>
     <url>/2020/08/30/Educational-Codeforces-Round-85/</url>
     <content><![CDATA[<p><a href="https://codeforces.ml/contest/1334">Link</a></p>
-<a id="more"></a>
 <h2 id="A-Level-Statistics"><a href="#A-Level-Statistics" class="headerlink" title="A. Level Statistics"></a>A. Level Statistics</h2><p>阅读理解题…，<a href="https://paste.ubuntu.com/p/PcsRp5Fqk2/">代码链接</a></p>
 <h2 id="B-Middle-Class"><a href="#B-Middle-Class" class="headerlink" title="B. Middle Class"></a>B. Middle Class</h2><p>贪心，尽量选有钱的人平均分配，<a href="https://paste.ubuntu.com/p/xbxRKF58M3/">代码链接</a></p>
+<a id="more"></a>
 <h2 id="C-Circle-of-Monsters"><a href="#C-Circle-of-Monsters" class="headerlink" title="C. Circle of Monsters"></a>C. Circle of Monsters</h2><p>怪兽一定是按顺序打过去的，枚举第一个打的是那个顺时针打过去就好了</p>
 <p>前缀和什么的算一下就好了，<a href="https://paste.ubuntu.com/p/BjdvYgpJdh/">代码链接</a></p>
 <h2 id="D-Minimum-Euler-Cycle"><a href="#D-Minimum-Euler-Cycle" class="headerlink" title="D. Minimum Euler Cycle"></a>D. Minimum Euler Cycle</h2><p>打 表 找 规 律</p>
@@ -200,8 +200,8 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
     <title>NOMURA Programming Competition 2020</title>
     <url>/2020/08/20/NOMURA-Programming-Competition-2020/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/nomura2020">Link</a></p>
-<a id="more"></a>
 <h2 id="A-Study-Scheduling"><a href="#A-Study-Scheduling" class="headerlink" title="A. Study Scheduling"></a>A. Study Scheduling</h2><p>难/kk，<a href="https://atcoder.jp/contests/nomura2020/submissions/16004681">评测链接</a></p>
+<a id="more"></a>
 <h2 id="B-Postdocs"><a href="#B-Postdocs" class="headerlink" title="B. Postdocs"></a>B. Postdocs</h2><p>填$\text{D}$至少使答案加$1$，一定不会劣与$\text{P}$，于是全部填$\text{D}$即可</p>
 <p>复杂度$\mathcal{O}(|T|)$，<a href="https://atcoder.jp/contests/nomura2020/submissions/16004703">评测链接</a></p>
 <h2 id="C-Folia"><a href="#C-Folia" class="headerlink" title="C. Folia"></a>C. Folia</h2><p>第$N$层一定只有$A_N$个点</p>
@@ -271,8 +271,8 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
     <title>Dwango Programming Contest 6th</title>
     <url>/2020/08/15/Dwango-Programming-Contest-6th/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/dwacon6th-prelims">Link</a></p>
-<a id="more"></a>
 <h2 id="A-Falling-Asleep"><a href="#A-Falling-Asleep" class="headerlink" title="A. Falling Asleep"></a>A. Falling Asleep</h2><p>难/kk，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15883987">评测链接</a></p>
+<a id="more"></a>
 <h2 id="B-Fusing-Slimes"><a href="#B-Fusing-Slimes" class="headerlink" title="B. Fusing Slimes"></a>B. Fusing Slimes</h2><p>由期望的线性性可以把$N-1$个间隙分开来考虑，设$f_i$表示左边有$i$只slime的一段区间期望被经过多少次</p>
 <p>那么答案就是$\sum_{i=1}^{N-1} (x_{i+1}-x_i)f_i$</p>
 <p>考虑计算$f_i$，首先第一次如果就抽到线段左边第一个点的话那么经过次数会加1，不然就变成$i-1$个slime的情况</p>
@@ -322,8 +322,8 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
     <title>Tokio Marine &amp; Nichido Fire Insurance Programming Contest 2020</title>
     <url>/2020/08/11/Tokio-Marine-Nichido-Fire-Insurance-Programming-Contest-2020/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/tokiomarine2020">Link</a></p>
-<a id="more"></a>
 <h2 id="A-Nickname"><a href="#A-Nickname" class="headerlink" title="A. Nickname"></a>A. Nickname</h2><p>难/kk，<a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15709689">评测链接</a></p>
+<a id="more"></a>
 <h2 id="B-Tag"><a href="#B-Tag" class="headerlink" title="B. Tag"></a>B. Tag</h2><p>难/kk， <a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15709850">评测链接</a></p>
 <h2 id="C-Lamps"><a href="#C-Lamps" class="headerlink" title="C. Lamps"></a>C. Lamps</h2><p>发现有效的操作轮数不是很多，模拟到所有$A_i=N$即可，<a href="https://atcoder.jp/contests/tokiomarine2020/submissions/15710108">评测链接</a></p>
 <h2 id="D-Knapsack-Queries-on-a-tree"><a href="#D-Knapsack-Queries-on-a-tree" class="headerlink" title="D. Knapsack Queries on a tree"></a>D. Knapsack Queries on a tree</h2><p><del>有幸遇到了一道校内膜你赛的题</del></p>
@@ -408,9 +408,9 @@ F^{-1}(x) \equiv 2H(x)-H(x)F(x)H(x) \pmod{x^n}</script><p>右边也就是那个$
     <title>AtCoder Regular Contest 101</title>
     <url>/2020/08/12/AtCoder-Regular-Contest-101/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc101">Link</a></p>
-<a id="more"></a>
 <h2 id="C-Candles"><a href="#C-Candles" class="headerlink" title="C. Candles"></a>C. Candles</h2><p>被点燃蜡烛一定在一个区间内，枚举这个区间计算即可</p>
 <p>复杂度$\mathcal{O}(N)$，<a href="https://atcoder.jp/contests/arc101/submissions/15829782">评测链接</a></p>
+<a id="more"></a>
 <h2 id="D-Median-of-Medians"><a href="#D-Median-of-Medians" class="headerlink" title="D. Median of Medians"></a>D. Median of Medians</h2><p>对于一个长度为$N$的序列，它的median一定满足以下条件：</p>
 <ul>
 <li>序列中小于等于median的数（包括本身）的个数$\times 2 &gt; N$</li>
@@ -485,6 +485,50 @@ g(N) = \begin{cases}
       </categories>
       <tags>
         <tag>杂项</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AtCoder Regular Contest 107</title>
+    <url>/2020/11/15/AtCoder-Regular-Contest-107/</url>
+    <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc107">Link</a></p>
+<h2 id="A-Simple-Math"><a href="#A-Simple-Math" class="headerlink" title="A. Simple Math"></a>A. Simple Math</h2><p>那个柿子$= \sum\limits_{a=1}^{A} a \sum\limits_{b=1}^B b \sum\limits_{c=1}^{C} c = (\sum\limits_{a=1}^{A} a) (\sum\limits_{b=1}^B b) (\sum\limits_{c=1}^{C} c) = \frac{a(a+1)}{2} \times \frac{b(b+1)}{2} \times \frac{c(c+1)}{2}$</p>
+<p><a href="https://paste.ubuntu.com/p/xPXTxW8wMG/">代码链接</a></p>
+<a id="more"></a>
+<h2 id="B-Quadruple"><a href="#B-Quadruple" class="headerlink" title="B. Quadruple"></a>B. Quadruple</h2><p>令$cnt_i$表示$a+b=i$且$1 \le a, b \le N$的有序对$(a,b)$的个数，算答案的时候枚举$(a,b,c,d)$中的$a+b$直接计数即可，<a href="https://paste.ubuntu.com/p/gdXWThKRpw/">代码链接</a></p>
+<h2 id="C-Shuffle-Permutation"><a href="#C-Shuffle-Permutation" class="headerlink" title="C. Shuffle Permutation"></a>C. Shuffle Permutation</h2><p>答案为$($可能的列的排列方式$) \times ($可能的行的排列方式$)$</p>
+<p>所以只要对这两个东西分别计数</p>
+<p>首先若$A$能与$B$交换，$B$能与$C$交换，则$A$也能与$C$交换，于是用并查集将两个能交换的行/列合并，答案就是所有连通块的大小的阶乘的积，<a href="https://paste.ubuntu.com/p/mGNSNVt25T/">代码链接</a></p>
+<h2 id="D-Number-of-Multisets"><a href="#D-Number-of-Multisets" class="headerlink" title="D. Number of Multisets"></a>D. Number of Multisets</h2><p>妙妙DP题</p>
+<p>令$dp_{i,j}$表示$N=i, K=j$时候的答案</p>
+<p>首先如果分的方案中存在$1$的话，会从$dp_{i-1,j-1}$转移</p>
+<p>否则就将所有数乘$2$，从$dp_{i,2j}$转移，倒序枚举$j$即可，<a href="https://paste.ubuntu.com/p/rbyftZ8nSs/">代码链接</a></p>
+<h2 id="E-Mex-Mat"><a href="#E-Mex-Mat" class="headerlink" title="E. Mex Mat"></a>E. Mex Mat</h2><p>找规律题，首先随机造个数据然后把那个矩阵算出来（$N = 50$时候的一个<a href="https://paste.ubuntu.com/p/qytfwrxP7j/">随机矩阵</a>）</p>
+<p>多随机几次后发现在前面若干行、列过后，右下角的子矩阵内的一条斜线上的数全都相等（官方题解上给出了前$4$行$4$列过后斜线上的数就全都一样了），于是先推出前面若干行与若干列计算即可，<a href="https://paste.ubuntu.com/p/CFR7CTJdHd/">代码链接</a></p>
+<h2 id="F-Sum-of-Abs"><a href="#F-Sum-of-Abs" class="headerlink" title="F. Sum of Abs"></a>F. Sum of Abs</h2><p>神仙网络流，想不到想不到/kk</p>
+<p>首先那个绝对值就很烦，注意到 $|x| = \max(x, -x)$，于是对于一个连通块的score，它就是</p>
+<script type="math/tex; mode=display">\lvert \sum b_i \rvert = \max(\sum b_i, -\sum b_i) = \max(\sum b_i, \sum -b_i)</script><p>于是在一个连通块内节点的权值$b$要么全是$-b$要么全是$b$</p>
+<p>然后最后的答案是$\sum \lvert \sum b \rvert - \sum a$，那个$a$是被删掉的节点的$a$</p>
+<p>所以一个点对答案的贡献只有$3$种，$b,-b,-a$</p>
+<p>每个东西在多个取值中选一个取值，满足一定的限制，使得权值和最大/小，可以想到最小割模型</p>
+<p>为了方便，把答案取反变为$\sum a - \sum \lvert \sum b \rvert$，我们只要使得这个东西最小</p>
+<p>建立超级源和超级汇$S,T$，对于一个点$u$，拆成两个点$u_x,u_y$，连以下几条边</p>
+<ul>
+<li>$S \rightarrow u_x$，权值为$b_u$，割掉这条边，表示$u$的权值取$b_u$</li>
+<li>$u_y \rightarrow T$，权值为$-b_u$，割掉这条边，表示$u$的权值取$-b_u$</li>
+<li>$u_x \rightarrow u_y$，权值为$a_u$，割掉这条边，表示把点$u$删除，对答案贡献$a_u$</li>
+</ul>
+<p>这样解决了取值问题，还有一个限制叫一个连通块内的点$b$的取值同为$b$或者$-b$</p>
+<p>对于原图中的一条边$(u,v)$，如果$u$的权值取$-b_u$（即割掉了$u_y \rightarrow T$这条边），则在原图中要么删除点$v$要么$v$的权值也取$-b_v$，那么就一定要在$v_x \rightarrow v_y,v_y \rightarrow T$这两条边中割掉一条，连一条$u_y \rightarrow v_x$，权值为$\infty$的边即可</p>
+<p>对于点$u$不被删除，权值取$b_u$的情况类似，连一条$v_y \rightarrow u_x$，权值为$\infty$的边</p>
+<p>求建出来的这张图的最小割就好了，但由于边的权值可能为负数，同时最小割中一定会被割掉$n$条边，让所有边边权加上$10^6$，再跑最大流即可，<a href="https://paste.ubuntu.com/p/DbHzd2KVdQ/">代码链接</a></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>AtCoder</tag>
+        <tag>题解</tag>
       </tags>
   </entry>
 </search>
