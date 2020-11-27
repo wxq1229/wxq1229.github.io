@@ -531,4 +531,63 @@ F^{-1}(x) \equiv 2H(x)-H(x)F(x)H(x) \pmod{x^n}</script><p>右边也就是那个$
         <tag>杂项</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Codeforces Round #628 (Div. 2)</title>
+    <url>/2020/11/27/Codeforces-Round-628-Div-2/</url>
+    <content><![CDATA[<p><a href="https://codeforces.ml/contest/1325">Link</a></p>
+<h2 id="A-EhAb-AnD-gCd"><a href="#A-EhAb-AnD-gCd" class="headerlink" title="A. EhAb AnD gCd"></a>A. EhAb AnD gCd</h2><p>注意到$\gcd(1,x)=1,\operatorname{lcm}(1,x)=x$，于是输出<code>1 x-1</code>就好了</p>
+<a id="more"></a>
+<p><a href="https://paste.ubuntu.com/p/gFQ2VSQT86/">代码链接</a></p>
+<h2 id="B-CopyCopyCopyCopyCopy"><a href="#B-CopyCopyCopyCopyCopy" class="headerlink" title="B. CopyCopyCopyCopyCopy"></a>B. CopyCopyCopyCopyCopy</h2><p>由于copy了$n$次，所以LIS的长度就是$a$中不同数的个数，<a href="https://paste.ubuntu.com/p/jd3DrwwTFM/">代码链接</a></p>
+<h2 id="C-Ehab-and-Path-etic-MEXs"><a href="#C-Ehab-and-Path-etic-MEXs" class="headerlink" title="C. Ehab and Path-etic MEXs"></a>C. Ehab and Path-etic MEXs</h2><p>首先如果这是一条链的话，不管怎么标，MEX的最大值都是$n-1$。</p>
+<p>否则的话就一定有一个点度数$\ge 3$，于是把$0,1,2$标到这些边中的任意三条上，可以保证所有MEX都$\le 2$，也不能做到更小了（把$0,1$的边放到一条路径上就可以使得$\text{MEX}$至少为$2$）</p>
+<p>于是先安排上$0,1,2$，然后其他随便标就好了，<a href="https://paste.ubuntu.com/p/5v9fBDvHKS/">代码链接</a></p>
+<h2 id="D-Ehab-the-Xorcist"><a href="#D-Ehab-the-Xorcist" class="headerlink" title="D. Ehab the Xorcist"></a>D. Ehab the Xorcist</h2><p>妙妙结论题</p>
+<p>（下面$\oplus$表示<code>xor</code>，$\&amp;$表示<code>and</code>）</p>
+<p>首先注意到异或与和的性质</p>
+<ul>
+<li>1.奇偶性一定是相同的</li>
+<li>2.异或一定小于等于和</li>
+</ul>
+<p>无解当且仅当$u,v$不满足上面的条件</p>
+<p>然后考虑构造。众所周知$x \oplus x = 0$ ，同时$u,v$奇偶性相同，于是令$a = \frac{v-u}{2}$，那么$[u,a,a]$一定是一个合法的序列</p>
+<p>我们已经找到了一个长度为$3$的合法序列，考虑有没有长度为$2$的</p>
+<p>假设$x \oplus y = u, x + y = v$，注意到一个柿子叫</p>
+<script type="math/tex; mode=display">x \oplus y = x + y - 2(x \& y)</script><p>（由于<code>xor</code>是不进位的加法，所以做完加法过后再把进位的减回来就是<code>xor</code>了）</p>
+<p>我们惊讶的发现$x \&amp; y$是一定的，也就是$a$</p>
+<p>问题变为了在保证$x \&amp; y = a$以及$x \oplus y = u$的情况下能不能构造出$[x,y]$（这时候$x+y$必然为$v$）</p>
+<p>必要条件是$a,u$在二进制下没有同为$1$的位（因为$1 \&amp; 1 = 1, 1 \oplus 1 = 0$），此时也能构造出一个合法序列：$[u+a,a]$（$u+a$不会发生进位了）</p>
+<p>还有长度为$0,1$的情况注意特判，<a href="https://paste.ubuntu.com/p/nThrPwjqh2/">代码链接</a></p>
+<h2 id="E-Ehab’s-REAL-Number-Theory-Problem"><a href="#E-Ehab’s-REAL-Number-Theory-Problem" class="headerlink" title="E. Ehab’s REAL Number Theory Problem"></a>E. Ehab’s REAL Number Theory Problem</h2><p>首先由于每个数最多只有$7$个约数，所以每个数最多只会有两个不同的质因子</p>
+<p>把所有数的质因子的指数都对$2$取模，那么剩下的数有三种情况</p>
+<ul>
+<li><p>什么也不剩了，那么选这个数就行了$Ans = 1$</p>
+</li>
+<li><p>只剩下一个质因子，留着</p>
+</li>
+<li><p>剩下两个质因子，留着</p>
+</li>
+</ul>
+<p>然后问题就是在剩下的数中选出若干个数出来，使得乘积是完全平方数</p>
+<p>看起来还是不好做…</p>
+<p>注意到每个数就最多与两个质因子有关了，如果选了一个数$x$满足$x = pq$，那么必定要选一个数$y$把$p$或者$q$的坑填上，假设$y = qr$，这时候我们手里已经有了三个质数$p,q,r$，如果能再选出一个$z = rp$的话就找到了一个大小为$3$的集合</p>
+<p>$p - q - r - p$？这是一个环==</p>
+<p>考虑建图，将每个质数抽象成一个点，对于一个有两个质因子的数$x$，假设$x = pq$，连一条$(p,q)$的双向边，问题就变成了这张图上的最小环！ <del>没想到吧</del></p>
+<p>对于这张图上的一个环，环上必然有一个质数$\le 1000$（环的长度至少为$2$），枚举这个质数作为起点$s$，跑BFS找环就好了</p>
+<p>最后不要忘了考虑上只剩下一个质因子的数，<a href="https://paste.ubuntu.com/p/dQsFnR2NfY/">代码链接</a></p>
+<h2 id="F-Ehab’s-Last-Theorem"><a href="#F-Ehab’s-Last-Theorem" class="headerlink" title="F. Ehab’s Last Theorem"></a>F. Ehab’s Last Theorem</h2><p>令$k = \lceil \sqrt{n} \rceil$</p>
+<p>先考虑找环，只需要遍历一遍DFS树，然后每遍历到一条返祖边，看它形成环上的节点是不是$\ge k$即可，即返祖边连接的两点在DFS树上的$depth$之差$\ge k-1$</p>
+<p>如果没有找到合法的环，那么就说明没有这样的返祖边。由于没有重边，可以发现DFS树上每个点只有不超过$k-2$条向上连的边</p>
+<p>在DFS树上<strong>自底向上</strong>贪心将点放到独立集内，发现每个点加入后影响的点不超过$k-2$个，这样一定能找到一个合法的独立集</p>
+<p>遍历一下即可，<a href="https://paste.ubuntu.com/p/Pd8C7w2zGw/">代码链接</a></p>
+]]></content>
+      <categories>
+        <category>Codeforces</category>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>Codeforces</tag>
+      </tags>
+  </entry>
 </search>
