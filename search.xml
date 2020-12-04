@@ -630,7 +630,7 @@ F^{-1}(x) \equiv 2H(x)-H(x)F(x)H(x) \pmod{x^n}</script><p>右边也就是那个$
 </ul>
 <p>用$dp_{i,j,S}$去更新，枚举第$i$段后面的问号填什么用上面两个数组转移即可。</p>
 <p>注意刚开始$dp_{1,root,0}$的值为$\text{wei}[1][root]$（前面没有问号了）</p>
-<p>可能需要卡卡常：对于一个合法的状态，一定有$\text{popcount}(S)=j$。<a href="https://paste.ubuntu.com/p/tN3tFjjkS2/">代码链接</a></p>
+<p>可能需要卡卡常：对于一个合法的状态，一定有$\text{popcount}(S)=j-1$。<a href="https://paste.ubuntu.com/p/tN3tFjjkS2/">代码链接</a></p>
 ]]></content>
       <categories>
         <category>Codeforces</category>
