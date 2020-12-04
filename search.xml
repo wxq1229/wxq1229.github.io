@@ -590,4 +590,55 @@ F^{-1}(x) \equiv 2H(x)-H(x)F(x)H(x) \pmod{x^n}</script><p>右边也就是那个$
         <tag>Codeforces</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Educational Codeforces Round 84 (Rated for Div. 2)</title>
+    <url>/2020/12/04/Educational-Codeforces-Round-84-Rated-for-Div-2/</url>
+    <content><![CDATA[<p><a href="https://codeforces.ml/contest/1327">Link</a></p>
+<h2 id="A-Sum-of-Odd-Integers"><a href="#A-Sum-of-Odd-Integers" class="headerlink" title="A. Sum of Odd Integers"></a>A. Sum of Odd Integers</h2><p>首先$n,k$的奇偶性必须相同，然后看$n$是否大于等于前$k$小的奇数的和即可，<a href="https://paste.ubuntu.com/p/YqRDC34hbr/">代码链接</a></p>
+<a id="more"></a>
+<h2 id="B-Princesses-and-Princes"><a href="#B-Princesses-and-Princes" class="headerlink" title="B. Princesses and Princes"></a>B. Princesses and Princes</h2><p>贪心，能匹配就匹配，<a href="https://paste.ubuntu.com/p/9HsJrx8rCm/">代码链接</a></p>
+<h2 id="C-Game-with-Chips"><a href="#C-Game-with-Chips" class="headerlink" title="C. Game with Chips"></a>C. Game with Chips</h2><p>先把所有点都移到左上角，然后再把所有格子走一遍即可，这样步数一定小于$2nm$，<a href="https://paste.ubuntu.com/p/CnDjMsR9GQ/">代码链接</a></p>
+<h2 id="D-Infinite-Path"><a href="#D-Infinite-Path" class="headerlink" title="D. Infinite Path"></a>D. Infinite Path</h2><p>对于$p[i]$，连一条$i \rightarrow p[i]$的有向边，不难发现这张图由若干的环组成。然后$p^k[i]$就是$i$在这张图上沿着唯一的出边走$k$步后到达的点</p>
+<p>枚举这张图内的所有环，假设当前环长度为$m$，枚举$k$，对于环上一个点，在走了$\frac{\operatorname{lcm}(m,k)}{k} = \frac{m}{\gcd(m,k)}$步会回到这个点，换句话说会把这个环拆分成长度为$\frac{m}{\gcd(m,k)}$的若干小环，所以只要枚举$k$是$m$的约数即可，<a href="https://paste.ubuntu.com/p/j6HS2WXJQv/">代码链接</a></p>
+<h2 id="E-Count-The-Blocks"><a href="#E-Count-The-Blocks" class="headerlink" title="E. Count The Blocks"></a>E. Count The Blocks</h2><p>将每个连通块的贡献分开来计算，对于一个长度为$i$的连通块，它有$n - i + 1$个不同的位置，其中有两个贴在左右两边</p>
+<ul>
+<li><p>对于这两个位置，对$ans_i$贡献$2 \times 10 \times 9 \times 10^{n-i-1}$</p>
+</li>
+<li><p>对于其他位置，对$ans_i$贡献$(n-i-1) \times 10 \times 9^2 \times 10^{n-i-2}$</p>
+</li>
+</ul>
+<p>注意特判$ans_n = 10$，<a href="https://paste.ubuntu.com/p/XhBJb6Z9Zm/">代码链接</a></p>
+<h2 id="F-AND-Segments"><a href="#F-AND-Segments" class="headerlink" title="F. AND Segments"></a>F. AND Segments</h2><p>首先由于$\operatorname{and}$运算二进制下每位互不影响，所以可以将每位分开来计数，最后乘起来就是答案</p>
+<p>现在问题变为有$n$个$0/1$变量$a_1,\cdots,a_n$，还有$m$个形如 「$a_{l…r}$均为$1$」或者「$a_{l…r}$ 至少有一个$0$」的条件</p>
+<p>对于第一个要求很好办，$a_{l},\cdots,a_{r}$的值已经确定为都是$1$，第二个似乎有点难做</p>
+<p>考虑DP，令$dp_i$表示前$i$个变量，指定$a_i$为$0$，有多少合法的方案（不考虑$r&gt;i$的要求）。为了方便统计答案，最后可以加入$a_{n+1}$强制它为$0$，那么$dp_{n+1}$就是答案</p>
+<p>对于第一类要求，我们能计算出有哪些位置一定取$1$，于是那个位置的$dp$值就为$0$</p>
+<p>剩下的如何转移，枚举最后一段全是$1$的区间$[j+1,i-1]$（可能$j+1&gt;i-1$，表示两个连续的$0$），将$dp_j$更新到$dp_i$上。考虑什么样的$j$是合法的，显然对于一个第二类的要求$[l,r]$，如果$[l,r]$被$[j+1, i-1]$包含，那么$j$就不合法</p>
+<p>具体的，记一个$\text{lft}[i]$表示右端点$\le i$的所有要求，左端点的最大值，于是能转移到$dp_i$的$j$，一定满足$j \ge \text{lft}[i-1]$（由于强制$a_i = 0$，所以右端点为$i$的要求就已经满足了）</p>
+<p>可以发现这个$j$随着$i$向右移动满足单调性，所以一个指针维护$j$，然后前缀和计算即可，<a href="https://paste.ubuntu.com/p/RXZFnZmDW5/">代码链接</a></p>
+<h2 id="G-Letters-and-Question-Marks"><a href="#G-Letters-and-Question-Marks" class="headerlink" title="G. Letters and Question Marks"></a>G. Letters and Question Marks</h2><p>考虑知道$T$最后的样子怎么算哪个柿子的值</p>
+<p>对$t_1,…,t_k$这$k$个串建立AC自动机，对于串$t_i$的末尾节点，将它的权值加上$c_i$。</p>
+<p>然后把$T$放到AC机上走，没走到一个节点就一直跳$\text{fail}$指针，跳到一个节点就把它的权值累加进答案</p>
+<p>可以在$\text{fail}$树上做前缀和算出到一个节点后对答案的贡献，优化掉向上跳的过程，于是变为每走到一个节点就把它的权值加进答案</p>
+<p>然后就可以DP了。具体的在串左右两边加个挡板，然后问号和挡板或者问号和问号之间为一段（不包括问号和两边的挡板，一段可能为空），然后令$dp_{i,j,S}$表示前$i$段，当前在AC机上的节点$j$，已经用了的字符集合为$S$时，答案的最大值。</p>
+<p>还要预处理两个东西</p>
+<ul>
+<li><p>$\text{trans}[i][j]$：第$i$段，刚开始在节点$j$，走完这一段后会走到哪里</p>
+</li>
+<li><p>$\text{wei}[i][j]$：第$i$段，刚开始在节点$j$，走完这一段后答案会增加多少（权值的和）</p>
+</li>
+</ul>
+<p>用$dp_{i,j,S}$去更新，枚举第$i$段后面的问号填什么用上面两个数组转移即可。</p>
+<p>注意刚开始$dp_{1,root,0}$的值为$\text{wei}[1][root]$（前面没有问号了）</p>
+<p>可能需要卡卡常：对于一个合法的状态，一定有$\text{popcount}(S)=j$。<a href="https://paste.ubuntu.com/p/tN3tFjjkS2/">代码链接</a></p>
+]]></content>
+      <categories>
+        <category>Codeforces</category>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>Codeforces</tag>
+      </tags>
+  </entry>
 </search>
