@@ -647,6 +647,7 @@ F^{-1}(x) \equiv 2H(x)-H(x)F(x)H(x) \pmod{x^n}</script><p>右边也就是那个$
     <content><![CDATA[<p><a href="https://vjudge.net/problem/SPOJ-GREMLINS">Link</a> (SPOJ太慢了 /kk)</p>
 <p>考虑一个naive的DP，他要求啥我就记啥，令$dp_{i,j}$表示第$i$年，种类为$j$的精灵最多向上追溯多少代（祖先的种类可能不一样）</p>
 <p>转移的话就枚举$j$的后代种类$j’$，这个后代孵化要花$R$年，于是</p>
+<a id="more"></a>
 <script type="math/tex; mode=display">dp_{i,j} + 1 \rightarrow dp_{i+Y_j+R, j'}</script><p>然后一看$T \le 10^{15}$，$N$只有$100$，可能是个矩阵快速幂（$\{\min, +\}$矩乘）</p>
 <p>但第一维在转移的时候直接从$i$变成了$i + Y_j + R$，我们希望它从$i$变到$i + 1$</p>
 <p>发现每次更新的时候是$dp_{i,j} + 1$，交换状态和DP的值，记$dp_{i,j}$表示第$j$种精灵，往上追溯$i$代，最少需要多少年</p>
