@@ -137,105 +137,6 @@ g(N) = \begin{cases}
       </tags>
   </entry>
   <entry>
-    <title>AtCoder Regular Contest 111</title>
-    <url>/2021/02/27/AtCoder-Regular-Contest-111/</url>
-    <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc111">Link</a></p>
-<h2 id="A-Simple-Math-2"><a href="#A-Simple-Math-2" class="headerlink" title="A. Simple Math 2"></a>A. Simple Math 2</h2><p>注意到$\lfloor \frac{10^N}{M}\rfloor \equiv \lfloor\frac{10^N}{M}\rfloor + kM \equiv \lfloor\frac{10^N + kM^2}{M}\rfloor\pmod M$（$k$为任意整数）</p>
-<a id="more"></a>
-<p>将$10^N$对$M^2$取模做分子再算即可，<a href="https://paste.ubuntu.com/p/CsQhsG67D5/">代码链接</a></p>
-<h2 id="B-Reversible-Cards"><a href="#B-Reversible-Cards" class="headerlink" title="B. Reversible Cards"></a>B. Reversible Cards</h2><p>将一张牌$(a,b)$抽象成无向图上的一条边$(a,b)$</p>
-<p>对于图上每个连通块分别计算</p>
-<p>考虑一个$V$个点$E$条边连通图（图中每个点代表一种颜色，每条边代表一张牌），显然$E \ge V-1$</p>
-<ul>
-<li><p>如果$E=V-1$，那么这是棵树，无论如何做多只能取到$V-1$中颜色</p>
-<p>这种情况下一种构造方案是随便选个点当树根，然后每条边取深度较深的那个点，这样树根不会被取到</p>
-</li>
-<li><p>如果$E &gt; V-1$，至少会有一个环，可以取到$V$种颜色</p>
-<p>将任意一个环上相邻两点之间的所有边全部删掉，把剩下来的当一棵树（不需要管其它环），两点中的一个当根。按照树的构造方案，最后随便让删掉的一条边选根节点即可</p>
-</li>
-</ul>
-<p><del>但是并不需要输出方案</del></p>
-<p><a href="https://paste.ubuntu.com/p/ndmvs3Mjmh/">代码链接</a></p>
-<h2 id="C-Too-Heavy"><a href="#C-Too-Heavy" class="headerlink" title="C. Too Heavy"></a>C. Too Heavy</h2><p>对于每个$i$，连一条$i \rightarrow p_i$的有向边，这张图一定由若干个环构成</p>
-<p>交换$i$与$j$手中的baggage，相当于$i$指向$p_j$，$j$指向$p_i$。目标是让$i$指向$i$。</p>
-<p>对于一个环，找到$a_i$最大的那个点$mx$，然后一直让$mx$和$p_{mx}$交换把$p_{mx}$踢出去即可（不需要考虑交换后$p_{mx}$会不会变得tired，因为目标已经达成了）</p>
-<p>这样$M$个点的环要花$M-1$步，显然是最少步数</p>
-<p><a href="https://paste.ubuntu.com/p/nw6h37f775/">代码链接</a></p>
-<h2 id="D-Orientation"><a href="#D-Orientation" class="headerlink" title="D. Orientation"></a>D. Orientation</h2><p>对于条边$(u,v)$，如果$c_u &gt; c_v$那么这条边只能$u \rightarrow v$。同理如果$c_u&lt;c_v$那么这条边就只能$v \rightarrow u$</p>
-<p>把$c_u \not= c_v$ 的这些边去掉，考虑剩下的$c_u = c_v$的边。</p>
-<p> 由于保证合法，所以对于$c_u = c_v$的边，一定存在一种定向方案使得$u$和$v$能互相到达。</p>
-<p>换句话说剩下的无向图里每个连通块都是强联通的。</p>
-<p>考虑一个连通块的DFS树，随便个点为根，每个点一定能通过返祖边到根节点。按DFS树上的方向定向就好了</p>
-<p>实现见代码，<a href="https://paste.ubuntu.com/p/X7X3Npv6y9/">代码链接</a></p>
-<h2 id="E-Simple-Math-3"><a href="#E-Simple-Math-3" class="headerlink" title="E. Simple Math 3"></a>E. Simple Math 3</h2><p>答案是有限的，因为要满足$A + B\cdot i + D - 1 &gt; A + C \cdot i$</p>
-<p>也就是$i &lt; \frac{D-1}{C-B}$，即$i \le \lfloor \frac{D-2}{C-B}\rfloor$，令$N = \lfloor\frac{D-2}{C-B}\rfloor$</p>
-<p>一个区间$[l,r]$内能被$D$整除的数的个数为$\lfloor\frac{r}{D}\rfloor-\lfloor\frac{l-1}{D}\rfloor$</p>
-<p>注意到对于$\le \lfloor\frac{D-2}{B-C}\rfloor$的$i$，一定满足$0 \le \lfloor \frac{Ci + A}{D}\rfloor-\lfloor \frac{Bi + A - 1}{D}\rfloor \le 1$</p>
-<p>换句话说包含$D$的倍数的$i$有$\sum_{i=1}^N \lfloor \frac{Ci + A}{D}\rfloor-\lfloor \frac{Bi + A - 1}{D}\rfloor$个</p>
-<p>答案就是$N - \sum_{i=1}^N \lfloor \frac{Ci + A}{D}\rfloor-\lfloor \frac{Bi + A - 1}{D}\rfloor$，类欧即可</p>
-<p>如果你的板子是从$0$开始的话注意减掉，<a href="https://paste.ubuntu.com/p/Vx4y7xNkDb/">代码链接</a></p>
-<h2 id="F-Do-you-like-query-problems"><a href="#F-Do-you-like-query-problems" class="headerlink" title="F. Do you like query problems?"></a>F. Do you like query problems?</h2><p>神仙题</p>
-<p>直接求和很麻烦，考虑转化为期望。我们假设所有操作随机生成</p>
-<p>由于期望的线性性，我们考虑分别计算每个$a_i$贡献的期望，再把它每轮的贡献分开来</p>
-<p>令$p_i$表示$i$被区间覆盖到的概率，$q_i$表示询问时$i$产生贡献的概率。则有$p_i = \frac{i(N-i+1)}{(N+1)N/2}=\frac{2i(N-i+1)}{N(N+1)},q_i = \frac{p_i}{2M+1}$</p>
-<p>再定义$Pr(i,j,v)$表示$j$轮过后$a_i=v$的概率，则有</p>
-<script type="math/tex; mode=display">
-E(i) = \sum\limits_{j = 0} ^ {Q - 1} q_i \sum\limits_{v = 0} ^ {M - 1} v \cdot Pr(i,j,v)</script><p>有个$v$的系数并且恰好等于也不是很方便计算，我们把等于改成大于等于</p>
-<p>那么</p>
-<script type="math/tex; mode=display">
-E(i) = q_i\sum\limits_{j=0}^{Q-1}\sum\limits_{v=1}^{M-1} Pr(i,j,v)</script><p>考虑递推计算$Pr(i,j,v)$</p>
-<ul>
-<li><p>$j=0$时，显然$Pr(i,j,v)=[v=0]$</p>
-</li>
-<li><p>$j &gt;0$时，分  类  讨  论 </p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-Pr(i,j,v) &= \frac{1}{2M + 1}Pr(i,j-1,v) &(t_j=3)\\ &+ \frac{M}{2M+1} \cdot \left( (1-p_i)Pr(i,j-1,v) + p_i\cdot \frac{M-v}{M}Pr(i,j-1,v) \right) &(t_j=1)\\
-  &+ \frac{M}{2M+1}\cdot \left( (1-p_i)Pr(i,j-1,v) + p_i \cdot \left( \frac{v}{M}Pr(i,j-1,v) + \frac{M-v}{M} \right) \right) &(t_j=2)
-\end{aligned}</script><p>化简可得$Pr(i,j,v) = \frac{1+2M-p_iM}{2M+1}Pr(i,j-1,v) + \frac{p_i(M-v)}{2M+1}$</p>
-</li>
-</ul>
-<p>令$k = \frac{1+2M-p_iM}{2M+1},b=\frac{p_i(M-v)}{2M+1}$</p>
-<p>有</p>
-<script type="math/tex; mode=display">
-Pr(i,j,v) = \begin{cases}
-k\cdot Pr(i,j-1,v) + b &(j>0) \\
-[v=0] &(j=0)
-\end{cases}</script><p>展开前面几项可以发现$Pr(i,j,v) = b\sum\limits_{t=0}^{j-1} k^j$，后面是个等比数列可以直接求和</p>
-<p>但是，还需要通过$Pr(i,j,v)$计算$Ans$，有式子</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-Ans &= \sum\limits_{i=1}^N E(i) \\
-&= \sum\limits_{i=1}^N q_i \sum\limits_{j=0}^{Q-1} \sum\limits_{v=1}^{M-1}Pr(i,j,v)
-\end{aligned}</script><p>为了化简的方便，我们把$Pr(i,j,v)$中的$k$记为$k_i$（$k_i = \frac{1+2M-p_iM}{2M+1}$），$b = b_v \cdot p_i$（$b_v = \frac{M-v}{2M+1}$）</p>
-<p>那么</p>
-<script type="math/tex; mode=display">
-Pr(i,j,v) = p_i \cdot b_v \cdot \sum\limits_{t=0}^{j-1}k_i^t</script><p>于是</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-Ans &= \sum\limits_{i=1}^N q_i \sum\limits_{j=0}^{Q-1} \sum\limits_{v=1}^{M-1}p_i \cdot b_v \cdot \sum\limits_{t=0}^{j-1}k_i^t \\
-&= \left( \sum\limits_{v=1}^{M-1} b_v \right)\left(\sum\limits_{i=1}^N p_iq_i\sum\limits_{j=0}^{Q-1}\sum\limits_{t=0}^{j-1} k_i^t\right)
-\end{aligned}</script><p>前面一部分直接算对于后面，我们枚举$i$，我们想快速求出$\sum\limits_{j=0}^{Q-1}\sum\limits_{t=0}^{j-1} k_i^t$</p>
-<p>交换一下求和顺序</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&\quad \sum\limits_{j=0}^{Q-1}\sum\limits_{t=0}^{j-1} k_i^t \\
-&= \sum\limits_{t=0}^{Q-1} k_i^t (Q-1-t) \\
-&= (Q-1)\sum\limits_{t=0}^{Q-1}k_i^t - \sum\limits_{t=0}^{Q-1}tk_{i}^t
-\end{aligned}</script><p>对于第一个$\sum$，可以等比数列求和。对于第二个</p>
-<p>考虑计算$S = \sum_{i=0}^{n-1} i\cdot q^i$。乘上$q$可以得到$qS = \sum_{i=1}^n (i-1)q^i$，那么$(1-q)S = \sum_{i=1}^{n-1}q^i - (n-1)q^n$，等比数列求和即可</p>
-<p>最后不要忘了乘上$(\frac{N(N+1)}{2}\cdot (2M+1))^Q$，<a href="https://paste.ubuntu.com/p/dBjTkpnk8Z/">代码链接</a></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>AtCoder</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-        <tag>AtCoder</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AtCoder Regular Contest 107</title>
     <url>/2020/11/15/AtCoder-Regular-Contest-107/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc107">Link</a></p>
@@ -394,57 +295,6 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
       </tags>
   </entry>
   <entry>
-    <title>Dwango Programming Contest 6th</title>
-    <url>/2020/08/15/Dwango-Programming-Contest-6th/</url>
-    <content><![CDATA[<p><a href="https://atcoder.jp/contests/dwacon6th-prelims">Link</a></p>
-<h2 id="A-Falling-Asleep"><a href="#A-Falling-Asleep" class="headerlink" title="A. Falling Asleep"></a>A. Falling Asleep</h2><p>难/kk，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15883987">评测链接</a></p>
-<a id="more"></a>
-<h2 id="B-Fusing-Slimes"><a href="#B-Fusing-Slimes" class="headerlink" title="B. Fusing Slimes"></a>B. Fusing Slimes</h2><p>由期望的线性性可以把$N-1$个间隙分开来考虑，设$f_i$表示左边有$i$只slime的一段区间期望被经过多少次</p>
-<p>那么答案就是$\sum_{i=1}^{N-1} (x_{i+1}-x_i)f_i$</p>
-<p>考虑计算$f_i$，首先第一次如果就抽到线段左边第一个点的话那么经过次数会加1，不然就变成$i-1$个slime的情况</p>
-<p>因此$f_i=\frac{1}{i}+f_{i-1}$，递推即可</p>
-<p>复杂度$\mathcal{O}(N)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15885372">评测链接</a></p>
-<h2 id="C-Cookie-Distribution"><a href="#C-Cookie-Distribution" class="headerlink" title="C. Cookie Distribution"></a>C. Cookie Distribution</h2><p>最后乘上组合数相当于直接统计所有分配方案下小朋友们的愉悦度总和</p>
-<p>看起来没啥思路，注意到最后那个乘法，$c_i$相当于在小朋友$i$获得的$c_i$块饼干中抢走一块的方案数，最后从每个小朋友手中抢走一块饼干</p>
-<p>考虑DP，令$dp_{i,j}$表示分配完前$i$天，有$j$个小朋友已经被抢走一个饼干的方案数</p>
-<p>枚举第$i+1$天被抢走刚分配到的饼干的小朋友的数量转移即可</p>
-<p>复杂度$\mathcal{O}(KN^2)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15885734">评测链接</a></p>
-<h2 id="D-Arrangement"><a href="#D-Arrangement" class="headerlink" title="D. Arrangement"></a>D. Arrangement</h2><p><del>搜，都可以搜</del></p>
-<p>相当于找补图中字典序最小的哈密顿路径</p>
-<p>这$N \le 10^5$完全没想法啊</p>
-<p>但是补图比较稠密，所以随便搜出一条路径的概率还是挺大的，考虑乱搞</p>
-<p>直接爆搜，但枝还是要剪的，不然一个$-1$就起飞了</p>
-<ul>
-<li><p>考虑搜出的当前路经中最后一个点$u$，如果$a_u$不在搜到的路径上，且$a_u$不能放在所有不在搜到路径上的点的右边那么当前状态显然不可能搜出一条合法的路径</p>
-</li>
-<li><p>另外可以维护一下下一个点的最小值</p>
-</li>
-</ul>
-<p>加了这两个剪枝过后跑的飞快/cy</p>
-<p>复杂度$\mathcal{O}(?)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15886644">评测链接</a></p>
-<h2 id="E-Span-Covering"><a href="#E-Span-Covering" class="headerlink" title="E. Span Covering"></a>E. Span Covering</h2><p>限制所有整点都要被覆盖到，考虑容斥，枚举$k$个未被覆盖的点$p_1,p_2,\cdots,p_k$，会把$[0,X)$从左往右依次分成$[0,p_1),[p1+1,p_2),\cdots ,[p_{k-1}+1,p_k),[p_k+1,X)$这$k+1$个小区间</p>
-<p>设这些区间的长度分别是$S_1,S_2,\cdots,S_{k+1}$（$S_i \ge 0$）</p>
-<p>那么第$i$个sheet，他就有$\sum\limits_{S_j+1 \ge L_i} S_j-L_i+1$种摆放方式，所以这种情况下总共有$\prod_{i=1}^N \sum\limits_{S_j+1 \ge L_i} S_j-L_i+1$个不同方案</p>
-<p>将所有情况下的摆放方案乘上一个容斥系数$(-1)^k$求和即可</p>
-<p>考虑给定$k$如何求所有满足限制的方案的和</p>
-<p>首先由于强制不能被覆盖的点$p$可能会相邻或者在左右边界上，这些都会使$S_i=0$，也就是说我们并不知道$S$的和，不是很方便算方案数</p>
-<p>不妨让所有$S$加$1$，这时候显然有$\sum S_j=X+1$，让$X$也加$1$好了</p>
-<p>于是柿子变成枚举所有的$\sum_{j=1}^{k+1} S_j=X(S_j \ge 1)$，对$\prod_{i=1}^N \sum\limits_{S_j \ge L_i} S_j-L_i$求和</p>
-<p>考虑DP，为了方便我们强制$S$从大到小排列只要在最后乘上可重集的排列数就好了</p>
-<p>令$dp_{l,c,x}$表示$k=c-1$，$S_1 \ge S_2 \ge \cdots S_{c} &gt; l$，$\sum S_j=x$时上面柿子的和（同时限制柿子中的$L_i &gt; l$）</p>
-<p>在用$dp_{l}$更新$dp_{l-1}$的时候先算前面几个sheet所代表的因式的贡献再乘上$L_i=l$这些sheet所代表的因式的贡献也就是$x-cL_i$即可</p>
-<p>复杂度$\mathcal{O}(X^3)$左右，不会算/kk，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15904207">评测链接</a></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>AtCoder</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-        <tag>AtCoder</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Educational Codeforces Round 84 (Rated for Div. 2)</title>
     <url>/2020/12/04/Educational-Codeforces-Round-84-Rated-for-Div-2/</url>
     <content><![CDATA[<p><a href="https://codeforces.ml/contest/1327">Link</a></p>
@@ -493,6 +343,105 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
       <tags>
         <tag>题解</tag>
         <tag>Codeforces</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AtCoder Regular Contest 111</title>
+    <url>/2021/02/27/AtCoder-Regular-Contest-111/</url>
+    <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc111">Link</a></p>
+<h2 id="A-Simple-Math-2"><a href="#A-Simple-Math-2" class="headerlink" title="A. Simple Math 2"></a>A. Simple Math 2</h2><p>注意到$\lfloor \frac{10^N}{M}\rfloor \equiv \lfloor\frac{10^N}{M}\rfloor + kM \equiv \lfloor\frac{10^N + kM^2}{M}\rfloor\pmod M$（$k$为任意整数）</p>
+<a id="more"></a>
+<p>将$10^N$对$M^2$取模做分子再算即可，<a href="https://paste.ubuntu.com/p/CsQhsG67D5/">代码链接</a></p>
+<h2 id="B-Reversible-Cards"><a href="#B-Reversible-Cards" class="headerlink" title="B. Reversible Cards"></a>B. Reversible Cards</h2><p>将一张牌$(a,b)$抽象成无向图上的一条边$(a,b)$</p>
+<p>对于图上每个连通块分别计算</p>
+<p>考虑一个$V$个点$E$条边连通图（图中每个点代表一种颜色，每条边代表一张牌），显然$E \ge V-1$</p>
+<ul>
+<li><p>如果$E=V-1$，那么这是棵树，无论如何做多只能取到$V-1$中颜色</p>
+<p>这种情况下一种构造方案是随便选个点当树根，然后每条边取深度较深的那个点，这样树根不会被取到</p>
+</li>
+<li><p>如果$E &gt; V-1$，至少会有一个环，可以取到$V$种颜色</p>
+<p>将任意一个环上相邻两点之间的所有边全部删掉，把剩下来的当一棵树（不需要管其它环），两点中的一个当根。按照树的构造方案，最后随便让删掉的一条边选根节点即可</p>
+</li>
+</ul>
+<p><del>但是并不需要输出方案</del></p>
+<p><a href="https://paste.ubuntu.com/p/ndmvs3Mjmh/">代码链接</a></p>
+<h2 id="C-Too-Heavy"><a href="#C-Too-Heavy" class="headerlink" title="C. Too Heavy"></a>C. Too Heavy</h2><p>对于每个$i$，连一条$i \rightarrow p_i$的有向边，这张图一定由若干个环构成</p>
+<p>交换$i$与$j$手中的baggage，相当于$i$指向$p_j$，$j$指向$p_i$。目标是让$i$指向$i$。</p>
+<p>对于一个环，找到$a_i$最大的那个点$mx$，然后一直让$mx$和$p_{mx}$交换把$p_{mx}$踢出去即可（不需要考虑交换后$p_{mx}$会不会变得tired，因为目标已经达成了）</p>
+<p>这样$M$个点的环要花$M-1$步，显然是最少步数</p>
+<p><a href="https://paste.ubuntu.com/p/nw6h37f775/">代码链接</a></p>
+<h2 id="D-Orientation"><a href="#D-Orientation" class="headerlink" title="D. Orientation"></a>D. Orientation</h2><p>对于条边$(u,v)$，如果$c_u &gt; c_v$那么这条边只能$u \rightarrow v$。同理如果$c_u&lt;c_v$那么这条边就只能$v \rightarrow u$</p>
+<p>把$c_u \not= c_v$ 的这些边去掉，考虑剩下的$c_u = c_v$的边。</p>
+<p> 由于保证合法，所以对于$c_u = c_v$的边，一定存在一种定向方案使得$u$和$v$能互相到达。</p>
+<p>换句话说剩下的无向图里每个连通块都是强联通的。</p>
+<p>考虑一个连通块的DFS树，随便个点为根，每个点一定能通过返祖边到根节点。按DFS树上的方向定向就好了</p>
+<p>实现见代码，<a href="https://paste.ubuntu.com/p/X7X3Npv6y9/">代码链接</a></p>
+<h2 id="E-Simple-Math-3"><a href="#E-Simple-Math-3" class="headerlink" title="E. Simple Math 3"></a>E. Simple Math 3</h2><p>答案是有限的，因为要满足$A + B\cdot i + D - 1 &gt; A + C \cdot i$</p>
+<p>也就是$i &lt; \frac{D-1}{C-B}$，即$i \le \lfloor \frac{D-2}{C-B}\rfloor$，令$N = \lfloor\frac{D-2}{C-B}\rfloor$</p>
+<p>一个区间$[l,r]$内能被$D$整除的数的个数为$\lfloor\frac{r}{D}\rfloor-\lfloor\frac{l-1}{D}\rfloor$</p>
+<p>注意到对于$\le \lfloor\frac{D-2}{B-C}\rfloor$的$i$，一定满足$0 \le \lfloor \frac{Ci + A}{D}\rfloor-\lfloor \frac{Bi + A - 1}{D}\rfloor \le 1$</p>
+<p>换句话说包含$D$的倍数的$i$有$\sum_{i=1}^N \lfloor \frac{Ci + A}{D}\rfloor-\lfloor \frac{Bi + A - 1}{D}\rfloor$个</p>
+<p>答案就是$N - \sum_{i=1}^N \lfloor \frac{Ci + A}{D}\rfloor-\lfloor \frac{Bi + A - 1}{D}\rfloor$，类欧即可</p>
+<p>如果你的板子是从$0$开始的话注意减掉，<a href="https://paste.ubuntu.com/p/Vx4y7xNkDb/">代码链接</a></p>
+<h2 id="F-Do-you-like-query-problems"><a href="#F-Do-you-like-query-problems" class="headerlink" title="F. Do you like query problems?"></a>F. Do you like query problems?</h2><p>神仙题</p>
+<p>直接求和很麻烦，考虑转化为期望。我们假设所有操作随机生成</p>
+<p>由于期望的线性性，我们考虑分别计算每个$a_i$贡献的期望，再把它每轮的贡献分开来</p>
+<p>令$p_i$表示$i$被区间覆盖到的概率，$q_i$表示询问时$i$产生贡献的概率。则有$p_i = \frac{i(N-i+1)}{(N+1)N/2}=\frac{2i(N-i+1)}{N(N+1)},q_i = \frac{p_i}{2M+1}$</p>
+<p>再定义$Pr(i,j,v)$表示$j$轮过后$a_i=v$的概率，则有</p>
+<script type="math/tex; mode=display">
+E(i) = \sum\limits_{j = 0} ^ {Q - 1} q_i \sum\limits_{v = 0} ^ {M - 1} v \cdot Pr(i,j,v)</script><p>有个$v$的系数并且恰好等于也不是很方便计算，我们把等于改成大于等于</p>
+<p>那么</p>
+<script type="math/tex; mode=display">
+E(i) = q_i\sum\limits_{j=0}^{Q-1}\sum\limits_{v=1}^{M-1} Pr(i,j,v)</script><p>考虑递推计算$Pr(i,j,v)$</p>
+<ul>
+<li><p>$j=0$时，显然$Pr(i,j,v)=[v=0]$</p>
+</li>
+<li><p>$j &gt;0$时，分  类  讨  论 </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Pr(i,j,v) &= \frac{1}{2M + 1}Pr(i,j-1,v) &(t_j=3)\\ &+ \frac{M}{2M+1} \cdot \left( (1-p_i)Pr(i,j-1,v) + p_i\cdot \frac{M-v}{M}Pr(i,j-1,v) \right) &(t_j=1)\\
+  &+ \frac{M}{2M+1}\cdot \left( (1-p_i)Pr(i,j-1,v) + p_i \cdot \left( \frac{v}{M}Pr(i,j-1,v) + \frac{M-v}{M} \right) \right) &(t_j=2)
+\end{aligned}</script><p>化简可得$Pr(i,j,v) = \frac{1+2M-p_iM}{2M+1}Pr(i,j-1,v) + \frac{p_i(M-v)}{2M+1}$</p>
+</li>
+</ul>
+<p>令$k = \frac{1+2M-p_iM}{2M+1},b=\frac{p_i(M-v)}{2M+1}$</p>
+<p>有</p>
+<script type="math/tex; mode=display">
+Pr(i,j,v) = \begin{cases}
+k\cdot Pr(i,j-1,v) + b &(j>0) \\
+[v=0] &(j=0)
+\end{cases}</script><p>展开前面几项可以发现$Pr(i,j,v) = b\sum\limits_{t=0}^{j-1} k^j$，后面是个等比数列可以直接求和</p>
+<p>但是，还需要通过$Pr(i,j,v)$计算$Ans$，有式子</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Ans &= \sum\limits_{i=1}^N E(i) \\
+&= \sum\limits_{i=1}^N q_i \sum\limits_{j=0}^{Q-1} \sum\limits_{v=1}^{M-1}Pr(i,j,v)
+\end{aligned}</script><p>为了化简的方便，我们把$Pr(i,j,v)$中的$k$记为$k_i$（$k_i = \frac{1+2M-p_iM}{2M+1}$），$b = b_v \cdot p_i$（$b_v = \frac{M-v}{2M+1}$）</p>
+<p>那么</p>
+<script type="math/tex; mode=display">
+Pr(i,j,v) = p_i \cdot b_v \cdot \sum\limits_{t=0}^{j-1}k_i^t</script><p>于是</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Ans &= \sum\limits_{i=1}^N q_i \sum\limits_{j=0}^{Q-1} \sum\limits_{v=1}^{M-1}p_i \cdot b_v \cdot \sum\limits_{t=0}^{j-1}k_i^t \\
+&= \left( \sum\limits_{v=1}^{M-1} b_v \right)\left(\sum\limits_{i=1}^N p_iq_i\sum\limits_{j=0}^{Q-1}\sum\limits_{t=0}^{j-1} k_i^t\right)
+\end{aligned}</script><p>前面一部分直接算对于后面，我们枚举$i$，我们想快速求出$\sum\limits_{j=0}^{Q-1}\sum\limits_{t=0}^{j-1} k_i^t$</p>
+<p>交换一下求和顺序</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\quad \sum\limits_{j=0}^{Q-1}\sum\limits_{t=0}^{j-1} k_i^t \\
+&= \sum\limits_{t=0}^{Q-1} k_i^t (Q-1-t) \\
+&= (Q-1)\sum\limits_{t=0}^{Q-1}k_i^t - \sum\limits_{t=0}^{Q-1}tk_{i}^t
+\end{aligned}</script><p>对于第一个$\sum$，可以等比数列求和。对于第二个</p>
+<p>考虑计算$S = \sum_{i=0}^{n-1} i\cdot q^i$。乘上$q$可以得到$qS = \sum_{i=1}^n (i-1)q^i$，那么$(1-q)S = \sum_{i=1}^{n-1}q^i - (n-1)q^n$，等比数列求和即可</p>
+<p>最后不要忘了乘上$(\frac{N(N+1)}{2}\cdot (2M+1))^Q$，<a href="https://paste.ubuntu.com/p/dBjTkpnk8Z/">代码链接</a></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
@@ -565,22 +514,72 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
       </tags>
   </entry>
   <entry>
-    <title>Luogu P6835 [Cnoi2020]线形生物</title>
-    <url>/2020/09/26/LuoguP6835-Cnoi2020-%E7%BA%BF%E5%BD%A2%E7%94%9F%E7%89%A9/</url>
-    <content><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P6835">Link</a></p>
-<p>一起来% <a href="https://www.luogu.com.cn/user/220037">w33z</a>吧！</p>
+    <title>Dwango Programming Contest 6th</title>
+    <url>/2020/08/15/Dwango-Programming-Contest-6th/</url>
+    <content><![CDATA[<p><a href="https://atcoder.jp/contests/dwacon6th-prelims">Link</a></p>
+<h2 id="A-Falling-Asleep"><a href="#A-Falling-Asleep" class="headerlink" title="A. Falling Asleep"></a>A. Falling Asleep</h2><p>难/kk，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15883987">评测链接</a></p>
 <a id="more"></a>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>令$d_i$表示$i$向前连的返祖边的条数</p>
-<p>先考虑一个DP，令$dp_i$表示点$i$到$n+1$的步数的期望，于是有转移</p>
-<script type="math/tex; mode=display">dp_i = \frac{1}{d_i+1}(dp_{i+1} + \sum\limits_{j \leftarrow i} dp_j) + 1</script><p>边界是$dp_{n+1} = 0$，我们想求出$dp_{1}$</p>
-<p>不好转移，我们发现与$dp_i$有关的状态有$i$通过返祖边连向的前面的节点以及$dp_{i+1}$</p>
-<p>来推推柿子</p>
-<script type="math/tex; mode=display">(d_i+1) dp_i = dp_{i+1} + d_i + 1 + \sum\limits_{j \leftarrow i} dp_j</script><script type="math/tex; mode=display">dp_{i+1} = (d_i+1) dp_i - d_i - 1 - \sum\limits_{j \leftarrow i} dp_j</script><p>观察到所有$dp_i$都可以用$dp_1$表示，即$dp_i = k_i dp_0 + b_i$</p>
-<p>显然$k_1 = 1, b_1 = 0$，于是我们能递推出$k_i,b_i$，然后得到一个等式$k_{n+1} dp_1 + b_{n+1} = dp_{n+1} = 0$，解方程即可</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P = <span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mpow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; b; b &gt;&gt;= <span class="number">1</span>, a = (ll) a * a % P)</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) ans = (ll) ans * a % P;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x += y;</span><br><span class="line">    <span class="keyword">if</span> (x &gt;= P) x -= P;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x -= y;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) x += P;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">line</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> k, b;</span><br><span class="line">    line <span class="keyword">operator</span>+(<span class="keyword">const</span> line &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;add(k, o.k), add(b, o.b)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>-(<span class="keyword">const</span> line &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;sub(k, o.k), sub(b, o.b)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;(ll) k * o % P, (ll) b * o % P&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>-(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;k, sub(b, o)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;k, add(b, o)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; g[N];</span><br><span class="line"><span class="keyword">int</span> d[N];</span><br><span class="line">line f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> f__k, n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; f__k &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        --u, --v;</span><br><span class="line">        g[u].push_back(v);</span><br><span class="line">        ++d[u];</span><br><span class="line">    &#125;</span><br><span class="line">    f[<span class="number">0</span>] = &#123;<span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        line tmp = f[i] * (d[i] + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> j : g[i])</span><br><span class="line">            tmp = tmp - f[j];</span><br><span class="line">        tmp = tmp - d[i] - <span class="number">1</span>;</span><br><span class="line">        f[i + <span class="number">1</span>] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (ll) (P - f[n].b) * mpow(f[n].k, P - <span class="number">2</span>) % P;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<h2 id="B-Fusing-Slimes"><a href="#B-Fusing-Slimes" class="headerlink" title="B. Fusing Slimes"></a>B. Fusing Slimes</h2><p>由期望的线性性可以把$N-1$个间隙分开来考虑，设$f_i$表示左边有$i$只slime的一段区间期望被经过多少次</p>
+<p>那么答案就是$\sum_{i=1}^{N-1} (x_{i+1}-x_i)f_i$</p>
+<p>考虑计算$f_i$，首先第一次如果就抽到线段左边第一个点的话那么经过次数会加1，不然就变成$i-1$个slime的情况</p>
+<p>因此$f_i=\frac{1}{i}+f_{i-1}$，递推即可</p>
+<p>复杂度$\mathcal{O}(N)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15885372">评测链接</a></p>
+<h2 id="C-Cookie-Distribution"><a href="#C-Cookie-Distribution" class="headerlink" title="C. Cookie Distribution"></a>C. Cookie Distribution</h2><p>最后乘上组合数相当于直接统计所有分配方案下小朋友们的愉悦度总和</p>
+<p>看起来没啥思路，注意到最后那个乘法，$c_i$相当于在小朋友$i$获得的$c_i$块饼干中抢走一块的方案数，最后从每个小朋友手中抢走一块饼干</p>
+<p>考虑DP，令$dp_{i,j}$表示分配完前$i$天，有$j$个小朋友已经被抢走一个饼干的方案数</p>
+<p>枚举第$i+1$天被抢走刚分配到的饼干的小朋友的数量转移即可</p>
+<p>复杂度$\mathcal{O}(KN^2)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15885734">评测链接</a></p>
+<h2 id="D-Arrangement"><a href="#D-Arrangement" class="headerlink" title="D. Arrangement"></a>D. Arrangement</h2><p><del>搜，都可以搜</del></p>
+<p>相当于找补图中字典序最小的哈密顿路径</p>
+<p>这$N \le 10^5$完全没想法啊</p>
+<p>但是补图比较稠密，所以随便搜出一条路径的概率还是挺大的，考虑乱搞</p>
+<p>直接爆搜，但枝还是要剪的，不然一个$-1$就起飞了</p>
+<ul>
+<li><p>考虑搜出的当前路经中最后一个点$u$，如果$a_u$不在搜到的路径上，且$a_u$不能放在所有不在搜到路径上的点的右边那么当前状态显然不可能搜出一条合法的路径</p>
+</li>
+<li><p>另外可以维护一下下一个点的最小值</p>
+</li>
+</ul>
+<p>加了这两个剪枝过后跑的飞快/cy</p>
+<p>复杂度$\mathcal{O}(?)$，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15886644">评测链接</a></p>
+<h2 id="E-Span-Covering"><a href="#E-Span-Covering" class="headerlink" title="E. Span Covering"></a>E. Span Covering</h2><p>限制所有整点都要被覆盖到，考虑容斥，枚举$k$个未被覆盖的点$p_1,p_2,\cdots,p_k$，会把$[0,X)$从左往右依次分成$[0,p_1),[p1+1,p_2),\cdots ,[p_{k-1}+1,p_k),[p_k+1,X)$这$k+1$个小区间</p>
+<p>设这些区间的长度分别是$S_1,S_2,\cdots,S_{k+1}$（$S_i \ge 0$）</p>
+<p>那么第$i$个sheet，他就有$\sum\limits_{S_j+1 \ge L_i} S_j-L_i+1$种摆放方式，所以这种情况下总共有$\prod_{i=1}^N \sum\limits_{S_j+1 \ge L_i} S_j-L_i+1$个不同方案</p>
+<p>将所有情况下的摆放方案乘上一个容斥系数$(-1)^k$求和即可</p>
+<p>考虑给定$k$如何求所有满足限制的方案的和</p>
+<p>首先由于强制不能被覆盖的点$p$可能会相邻或者在左右边界上，这些都会使$S_i=0$，也就是说我们并不知道$S$的和，不是很方便算方案数</p>
+<p>不妨让所有$S$加$1$，这时候显然有$\sum S_j=X+1$，让$X$也加$1$好了</p>
+<p>于是柿子变成枚举所有的$\sum_{j=1}^{k+1} S_j=X(S_j \ge 1)$，对$\prod_{i=1}^N \sum\limits_{S_j \ge L_i} S_j-L_i$求和</p>
+<p>考虑DP，为了方便我们强制$S$从大到小排列只要在最后乘上可重集的排列数就好了</p>
+<p>令$dp_{l,c,x}$表示$k=c-1$，$S_1 \ge S_2 \ge \cdots S_{c} &gt; l$，$\sum S_j=x$时上面柿子的和（同时限制柿子中的$L_i &gt; l$）</p>
+<p>在用$dp_{l}$更新$dp_{l-1}$的时候先算前面几个sheet所代表的因式的贡献再乘上$L_i=l$这些sheet所代表的因式的贡献也就是$x-cL_i$即可</p>
+<p>复杂度$\mathcal{O}(X^3)$左右，不会算/kk，<a href="https://atcoder.jp/contests/dwacon6th-prelims/submissions/15904207">评测链接</a></p>
+]]></content>
       <categories>
         <category>题解</category>
+        <category>AtCoder</category>
       </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>AtCoder</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SPOJ GREMLINS Gremlins</title>
+    <url>/2020/12/30/SPOJ-GREMLINS-Gremlins/</url>
+    <content><![CDATA[<p><a href="https://vjudge.net/problem/SPOJ-GREMLINS">Link</a> (SPOJ太慢了 /kk)</p>
+<p>考虑一个naive的DP，他要求啥我就记啥，令$dp_{i,j}$表示第$i$年，种类为$j$的精灵最多向上追溯多少代（祖先的种类可能不一样）</p>
+<p>转移的话就枚举$j$的后代种类$j’$，这个后代孵化要花$R$年，于是</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">dp_{i,j} + 1 \rightarrow dp_{i+Y_j+R, j'}</script><p>然后一看$T \le 10^{15}$，$N$只有$100$，可能是个矩阵快速幂（$\{\min, +\}$矩乘）</p>
+<p>但第一维在转移的时候直接从$i$变成了$i + Y_j + R$，我们希望它从$i$变到$i + 1$</p>
+<p>发现每次更新的时候是$dp_{i,j} + 1$，交换状态和DP的值，记$dp_{i,j}$表示第$j$种精灵，往上追溯$i$代，最少需要多少年</p>
+<p>还是枚举后代种类$j’$，转移就变成了</p>
+<script type="math/tex; mode=display">dp_{i, j} + Y_j + R \rightarrow dp_{i + 1, j'}</script><p>然后就是老套路拿矩乘去进行转移。求答案可以二分或者倍增，但要注意一下复杂度。</p>
+<p>有一个小trick，我们把$dp_{i,1..N}$放在一个列向量$\mathbf{F}$里，每一次$dp_{i}$向$dp_{i+1}$的时候相当于左乘一个转移矩阵$\mathbf{A}$，那么最后要求的$dp_{i,1..N}$就是$\mathbf{A} ^ i \mathbf{F}$</p>
+<p>我们用$\mathcal{O}(N ^ 3 \log T)$的复杂度预处理出$\mathbf{A}^{2^k}$，在算$\mathbf{A} ^ i \mathbf{F}$的时候把$\mathbf{A}^i$拆分成若干$\mathbf{A}^{2^k}$的乘积。由于矩乘有结合律，所以让列向量依次左乘这些矩阵，单次乘法的复杂度就变成$\mathcal{O}(N ^ 2)$了</p>
+<p>倍增就从高到低枚举$k$，如果再往后繁衍$2 ^ k$代能行的话就繁衍。算答案$\mathcal{O}(N ^ 2 \log T)$，预处理$\mathcal{O}(N ^ 3 \log T)$</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> i64 = <span class="keyword">int64_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> N = <span class="number">110</span>, LOG = <span class="number">55</span>;</span><br><span class="line"><span class="keyword">constexpr</span> i64 INF = <span class="number">1e18</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Matrix</span> &#123;</span></span><br><span class="line">    i64 a[N][N];</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    </span><br><span class="line">    Matrix() &#123; &#125;</span><br><span class="line">    </span><br><span class="line">    Matrix(<span class="keyword">int</span> R, <span class="keyword">int</span> C) &#123;</span><br><span class="line">        n = R, m = C;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; ++j) a[i][j] = INF;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Matrix <span class="keyword">operator</span>*(<span class="keyword">const</span> Matrix &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        assert(m == o.n);</span><br><span class="line">        <span class="function">Matrix <span class="title">ans</span><span class="params">(n, o.m)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; m; ++k)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.n; ++i)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ans.m; ++j)</span><br><span class="line">                    ans.a[i][j] = <span class="built_in">std</span>::min(ans.a[i][j], a[i][k] + o.a[k][j]);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)</span><br><span class="line">                <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; a[i][j] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Matrix pw[LOG];</span><br><span class="line"><span class="keyword">int</span> n; i64 T;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">chk</span><span class="params">(<span class="keyword">const</span> Matrix &amp;Fn)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">        <span class="keyword">if</span> (Fn.a[i][<span class="number">0</span>] &lt;= T) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> types[<span class="number">1010</span>], rs[<span class="number">1010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; T;</span><br><span class="line">    </span><br><span class="line">    <span class="function">Matrix <span class="title">F</span><span class="params">(n, <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">        F.a[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    Matrix &amp;G = pw[<span class="number">0</span>];</span><br><span class="line">    G = Matrix(n, n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> k; i64 y;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; k &gt;&gt; y;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; ++j) &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; types[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; ++j) &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; rs[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; ++j) &#123;</span><br><span class="line">            <span class="keyword">int</span> type = types[j]; i64 r = rs[j];</span><br><span class="line">            --type;</span><br><span class="line">            G.a[type][i] = <span class="built_in">std</span>::min(G.a[type][i], y + r);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; LOG; ++i)</span><br><span class="line">        pw[i] = pw[i - <span class="number">1</span>] * pw[i - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    i64 ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = LOG - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        Matrix Fn = pw[i] * F;</span><br><span class="line">        <span class="keyword">if</span> (chk(Fn)) &#123; ans |= <span class="number">1l</span>l &lt;&lt; i; F = Fn; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>题解</tag>
       </tags>
@@ -657,23 +656,38 @@ C_{i,j} = \max_{k=1}^m \{ A_{i,k} + B_{k,j} \}</script><p>可以证明这样的�
       </tags>
   </entry>
   <entry>
-    <title>SPOJ GREMLINS Gremlins</title>
-    <url>/2020/12/30/SPOJ-GREMLINS-Gremlins/</url>
-    <content><![CDATA[<p><a href="https://vjudge.net/problem/SPOJ-GREMLINS">Link</a> (SPOJ太慢了 /kk)</p>
-<p>考虑一个naive的DP，他要求啥我就记啥，令$dp_{i,j}$表示第$i$年，种类为$j$的精灵最多向上追溯多少代（祖先的种类可能不一样）</p>
-<p>转移的话就枚举$j$的后代种类$j’$，这个后代孵化要花$R$年，于是</p>
+    <title>Luogu P6835 [Cnoi2020]线形生物</title>
+    <url>/2020/09/26/LuoguP6835-Cnoi2020-%E7%BA%BF%E5%BD%A2%E7%94%9F%E7%89%A9/</url>
+    <content><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P6835">Link</a></p>
+<p>一起来% <a href="https://www.luogu.com.cn/user/220037">w33z</a>吧！</p>
 <a id="more"></a>
-<script type="math/tex; mode=display">dp_{i,j} + 1 \rightarrow dp_{i+Y_j+R, j'}</script><p>然后一看$T \le 10^{15}$，$N$只有$100$，可能是个矩阵快速幂（$\{\min, +\}$矩乘）</p>
-<p>但第一维在转移的时候直接从$i$变成了$i + Y_j + R$，我们希望它从$i$变到$i + 1$</p>
-<p>发现每次更新的时候是$dp_{i,j} + 1$，交换状态和DP的值，记$dp_{i,j}$表示第$j$种精灵，往上追溯$i$代，最少需要多少年</p>
-<p>还是枚举后代种类$j’$，转移就变成了</p>
-<script type="math/tex; mode=display">dp_{i, j} + Y_j + R \rightarrow dp_{i + 1, j'}</script><p>然后就是老套路拿矩乘去进行转移。求答案可以二分或者倍增，但要注意一下复杂度。</p>
-<p>有一个小trick，我们把$dp_{i,1..N}$放在一个列向量$\mathbf{F}$里，每一次$dp_{i}$向$dp_{i+1}$的时候相当于左乘一个转移矩阵$\mathbf{A}$，那么最后要求的$dp_{i,1..N}$就是$\mathbf{A} ^ i \mathbf{F}$</p>
-<p>我们用$\mathcal{O}(N ^ 3 \log T)$的复杂度预处理出$\mathbf{A}^{2^k}$，在算$\mathbf{A} ^ i \mathbf{F}$的时候把$\mathbf{A}^i$拆分成若干$\mathbf{A}^{2^k}$的乘积。由于矩乘有结合律，所以让列向量依次左乘这些矩阵，单次乘法的复杂度就变成$\mathcal{O}(N ^ 2)$了</p>
-<p>倍增就从高到低枚举$k$，如果再往后繁衍$2 ^ k$代能行的话就繁衍。算答案$\mathcal{O}(N ^ 2 \log T)$，预处理$\mathcal{O}(N ^ 3 \log T)$</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> i64 = <span class="keyword">int64_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> N = <span class="number">110</span>, LOG = <span class="number">55</span>;</span><br><span class="line"><span class="keyword">constexpr</span> i64 INF = <span class="number">1e18</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Matrix</span> &#123;</span></span><br><span class="line">    i64 a[N][N];</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    </span><br><span class="line">    Matrix() &#123; &#125;</span><br><span class="line">    </span><br><span class="line">    Matrix(<span class="keyword">int</span> R, <span class="keyword">int</span> C) &#123;</span><br><span class="line">        n = R, m = C;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; ++j) a[i][j] = INF;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Matrix <span class="keyword">operator</span>*(<span class="keyword">const</span> Matrix &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        assert(m == o.n);</span><br><span class="line">        <span class="function">Matrix <span class="title">ans</span><span class="params">(n, o.m)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; m; ++k)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.n; ++i)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ans.m; ++j)</span><br><span class="line">                    ans.a[i][j] = <span class="built_in">std</span>::min(ans.a[i][j], a[i][k] + o.a[k][j]);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)</span><br><span class="line">                <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; a[i][j] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Matrix pw[LOG];</span><br><span class="line"><span class="keyword">int</span> n; i64 T;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">chk</span><span class="params">(<span class="keyword">const</span> Matrix &amp;Fn)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">        <span class="keyword">if</span> (Fn.a[i][<span class="number">0</span>] &lt;= T) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> types[<span class="number">1010</span>], rs[<span class="number">1010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; T;</span><br><span class="line">    </span><br><span class="line">    <span class="function">Matrix <span class="title">F</span><span class="params">(n, <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">        F.a[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    Matrix &amp;G = pw[<span class="number">0</span>];</span><br><span class="line">    G = Matrix(n, n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> k; i64 y;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; k &gt;&gt; y;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; ++j) &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; types[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; ++j) &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; rs[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; ++j) &#123;</span><br><span class="line">            <span class="keyword">int</span> type = types[j]; i64 r = rs[j];</span><br><span class="line">            --type;</span><br><span class="line">            G.a[type][i] = <span class="built_in">std</span>::min(G.a[type][i], y + r);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; LOG; ++i)</span><br><span class="line">        pw[i] = pw[i - <span class="number">1</span>] * pw[i - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    i64 ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = LOG - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        Matrix Fn = pw[i] * F;</span><br><span class="line">        <span class="keyword">if</span> (chk(Fn)) &#123; ans |= <span class="number">1l</span>l &lt;&lt; i; F = Fn; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>令$d_i$表示$i$向前连的返祖边的条数</p>
+<p>先考虑一个DP，令$dp_i$表示点$i$到$n+1$的步数的期望，于是有转移</p>
+<script type="math/tex; mode=display">dp_i = \frac{1}{d_i+1}(dp_{i+1} + \sum\limits_{j \leftarrow i} dp_j) + 1</script><p>边界是$dp_{n+1} = 0$，我们想求出$dp_{1}$</p>
+<p>不好转移，我们发现与$dp_i$有关的状态有$i$通过返祖边连向的前面的节点以及$dp_{i+1}$</p>
+<p>来推推柿子</p>
+<script type="math/tex; mode=display">(d_i+1) dp_i = dp_{i+1} + d_i + 1 + \sum\limits_{j \leftarrow i} dp_j</script><script type="math/tex; mode=display">dp_{i+1} = (d_i+1) dp_i - d_i - 1 - \sum\limits_{j \leftarrow i} dp_j</script><p>观察到所有$dp_i$都可以用$dp_1$表示，即$dp_i = k_i dp_0 + b_i$</p>
+<p>显然$k_1 = 1, b_1 = 0$，于是我们能递推出$k_i,b_i$，然后得到一个等式$k_{n+1} dp_1 + b_{n+1} = dp_{n+1} = 0$，解方程即可</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P = <span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mpow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; b; b &gt;&gt;= <span class="number">1</span>, a = (ll) a * a % P)</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) ans = (ll) ans * a % P;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x += y;</span><br><span class="line">    <span class="keyword">if</span> (x &gt;= P) x -= P;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x -= y;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) x += P;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">line</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> k, b;</span><br><span class="line">    line <span class="keyword">operator</span>+(<span class="keyword">const</span> line &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;add(k, o.k), add(b, o.b)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>-(<span class="keyword">const</span> line &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;sub(k, o.k), sub(b, o.b)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;(ll) k * o % P, (ll) b * o % P&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>-(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;k, sub(b, o)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    line <span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="keyword">int</span> &amp;o) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;k, add(b, o)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; g[N];</span><br><span class="line"><span class="keyword">int</span> d[N];</span><br><span class="line">line f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> f__k, n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; f__k &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        --u, --v;</span><br><span class="line">        g[u].push_back(v);</span><br><span class="line">        ++d[u];</span><br><span class="line">    &#125;</span><br><span class="line">    f[<span class="number">0</span>] = &#123;<span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        line tmp = f[i] * (d[i] + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> j : g[i])</span><br><span class="line">            tmp = tmp - f[j];</span><br><span class="line">        tmp = tmp - d[i] - <span class="number">1</span>;</span><br><span class="line">        f[i + <span class="number">1</span>] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (ll) (P - f[n].b) * mpow(f[n].k, P - <span class="number">2</span>) % P;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
       <tags>
         <tag>题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>老博客链接</title>
+    <url>/2020/08/11/%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/</url>
+    <content><![CDATA[<p>换blog辣~</p>
+<a id="more"></a>
+<p><a href="https://www.cnblogs.com/wxq1229">原来的博客</a></p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>杂项</tag>
       </tags>
   </entry>
   <entry>
@@ -760,20 +774,6 @@ F^{-1}(x) \equiv 2H(x)-H(x)F(x)H(x) \pmod{x^n}</script><p>右边也就是那个$
       </categories>
       <tags>
         <tag>题解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>老博客链接</title>
-    <url>/2020/08/11/%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/</url>
-    <content><![CDATA[<p>换blog辣~</p>
-<a id="more"></a>
-<p><a href="https://www.cnblogs.com/wxq1229">原来的博客</a></p>
-]]></content>
-      <categories>
-        <category>杂项</category>
-      </categories>
-      <tags>
-        <tag>杂项</tag>
       </tags>
   </entry>
 </search>
